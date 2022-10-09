@@ -9,7 +9,8 @@ A collection of programs written in Java for practicing with the language.
   - README.md
   - license
   - (folder) unimi_exercises
-    -  Lychrel.java/.class
+    - Lychrel.java/.class
+    - CastingOutNine.java/.class
 
 ## Notes
 

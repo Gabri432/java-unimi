@@ -38,7 +38,7 @@ public class CastingOutNine {
         return sumStringNumbers(numberToString(Integer.parseInt(numb1)*Integer.parseInt(numb2)));
     }
 
-    /** It checks if a set of factors pass the 'Casting out Nine' but give a wrong product. 
+    /** It checks if a set of factors passes the 'Casting out Nine' test but gives a wrong product. 
      * @param numb an integer, which will be the upper limit for the factors and the product.
      * 
     */

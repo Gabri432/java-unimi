@@ -11,8 +11,10 @@ A collection of programs written in Java for practicing with the language.
   - (folder) unimi_exercises
     - Lychrel.java/.class
     - CastingOutNine.java/.class
+    - DrawV.java/.class
 
 ## Notes
+- The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features. 
 
 ### Java version
 ```

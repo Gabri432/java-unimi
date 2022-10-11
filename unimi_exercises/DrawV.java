@@ -2,7 +2,7 @@ public class DrawV {
 
     static void printV(int n) {
         for (int i=0; i<n; i++) {
-            for (int j=0; j<2*n-3-i; j++) { //2*n-3-i is the amout of spaces between the first and the second '*'
+            for (int j=0; j<2*n-3-i; j++) { //2*n-3-i is the amout of spaces preceeding the second '*'
                 if (i==j) { //the position of the starting '*'
                     System.out.print("*");
                 }
@@ -16,6 +16,6 @@ public class DrawV {
     }
 
     public static void main(String[] args) {
-        printV(5);
+        printV(3);
     }
 }

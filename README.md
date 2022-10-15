@@ -20,7 +20,7 @@ A collection of programs written in Java for practicing with the language.
   - DrawChess.java/.class
 
 - e02
-  - currently empty, it will contains other java classes
+  - currently empty, it will contain other java classes
 
 ## Notes
 - The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features. 

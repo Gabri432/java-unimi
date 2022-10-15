@@ -1,5 +1,7 @@
 package unimi_exercises.e01;
 
+import java.util.Scanner;
+
 public class DrawChess {
 
     static void printSquare(String symbol, int n) {
@@ -33,6 +35,10 @@ public class DrawChess {
         }
     }
     public static void main(String[] args) {
-        printChess(3);
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter number");
+        int number = myObj.nextInt();
+        myObj.close();
+        printChess(number);
     }
 }

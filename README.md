@@ -18,6 +18,7 @@ A collection of programs written in Java for practicing with the language.
   - CastingOutNine.java/.class
   - DrawV.java/.class
   - DrawChess.java/.class
+  - DrawRhombus.java/.class
 
 - e02
   - currently empty, it will contain other java classes

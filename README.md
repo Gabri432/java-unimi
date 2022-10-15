@@ -25,6 +25,7 @@ A collection of programs written in Java for practicing with the language.
 
 ## Notes
 - The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features. 
+- Each program (or class) has been tested with all the inputs provided by the respective exersices.
 
 ### Java version
 ```

@@ -19,6 +19,7 @@ A collection of programs written in Java for practicing with the language.
   - DrawV.java/.class
   - DrawChess.java/.class
   - DrawRhombus.java/.class
+  - Kaprekar.java/.class
 
 - e02
   - currently empty, it will contain other java classes

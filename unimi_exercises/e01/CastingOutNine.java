@@ -1,4 +1,4 @@
-package unimi_exercises;
+package unimi_exercises.e01;
 
 public class CastingOutNine {
     static String numberToString(int numb) {

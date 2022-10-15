@@ -1,5 +1,5 @@
-import unimi_exercises.Lychrel;
-import unimi_exercises.CastingOutNine;
+import unimi_exercises.e01.Lychrel;
+import unimi_exercises.e01.CastingOutNine;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Lychrel\n");

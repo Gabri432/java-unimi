@@ -1,4 +1,4 @@
-package unimi_exercises;
+package unimi_exercises.e01;
 import java.util.ArrayList;
 
 public class Lychrel {

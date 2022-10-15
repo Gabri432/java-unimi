@@ -1,3 +1,5 @@
+package unimi_exercises.e01;
+
 public class DrawV {
 
     static void printV(int n) {

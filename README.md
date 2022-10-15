@@ -14,12 +14,12 @@ A collection of programs written in Java for practicing with the language.
 
 
 - e01
-  - Lychrel.java/.class
-  - CastingOutNine.java/.class
-  - DrawV.java/.class
-  - DrawChess.java/.class
-  - DrawRhombus.java/.class
-  - Kaprekar.java/.class
+  - [Lychrel.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/Lychrel.java)
+  - [CastingOutNine.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/CastingOutNine.java)
+  - [DrawV.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/DrawV.java)
+  - [DrawChess.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/DrawChess.java)
+  - [DrawRhombus.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/DrawRhombus.java)
+  - [Kaprekar.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/Kaprekar.java)
 
 - e02
   - currently empty, it will contain other java classes

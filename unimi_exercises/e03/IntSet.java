@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IntSet {
-    ArrayList<Integer> elements; // Creating a class attribute.
+    ArrayList<Integer> elements = new ArrayList<Integer>(); // Creating a class attribute.
 
     public IntSet() {} // Creating a class constructor for the IntSet class.
     public static void main(String[] args) {
         IntSet mySet = new IntSet();
+        mySet.addElements();
         mySet.size();
     }
 
@@ -24,16 +25,23 @@ public class IntSet {
         return number;
     }
 
-    /** It asks the user to insert a list of numbers to add to the set of integers.
+    /** It asks the user to insert a list of numbers to add to the set of integers and stops doing 
+     * so when the user enters a non integer.
      * 
      */
     public void addElements() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Enter numbers");
-        while (myObj.hasNextInt()) {
-            elements.add(myObj.nextInt());
+        try {
+            while (myObj.hasNextInt()) {
+                elements.add(myObj.nextInt());
+            }
+        } catch (Exception e) {
+            System.out.println("Wrong input inserted. Closing input stream.");
+        } finally {
+            System.out.println(elements);
+            myObj.close();
         }
-        myObj.close();
     }
     
     /** It removes an integer from the list of integers of the class.

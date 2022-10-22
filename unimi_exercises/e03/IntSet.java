@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IntSet {
-    ArrayList<Integer> elements;
+    ArrayList<Integer> elements; // Creating a class attribute.
+
+    public IntSet() {} // Creating a class constructor for the IntSet class.
     public static void main(String[] args) {
         IntSet mySet = new IntSet();
         mySet.size();
@@ -22,7 +24,7 @@ public class IntSet {
         return number;
     }
 
-    /** It asks the user to insert a list of integers to add to the integer set.
+    /** It asks the user to insert a list of numbers to add to the set of integers.
      * 
      */
     public void addElements() {
@@ -80,7 +82,7 @@ public class IntSet {
         return elements.size();
     }
 
-    /** It verifies if x is in the integer set. 
+    /** It verifies if x is in the set of integers. 
      * 
      * @param x the integer to find.
      * @return true when x is found, false otherwise.
@@ -94,8 +96,18 @@ public class IntSet {
         return false;
     }
 
+    /**
+     * @return the set of integers converted into a string.
+     */
     public String toString() {
-        return "";
+        String numbers = "";
+        for (int i = 0; i<elements.size(); i++) {
+            numbers += Integer.toString(elements.get(i));
+            if (i+1 < elements.size()) {
+                numbers += ",";
+            }
+        }
+        return "{" + numbers + "}";
     }
 }
 
@@ -104,5 +116,13 @@ class EmptyException extends Exception { // Creating a custom exception for hand
     {
         // Call constructor of parent Exception
         super(s);
+    }
+}
+
+class Test {  // Creating a class to test the IntSet class methods. 
+    public static void main(String[] args) {
+        IntSet mySet = new IntSet();
+        mySet.addElements();
+        mySet.size();
     }
 }

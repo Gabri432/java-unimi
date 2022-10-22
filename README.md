@@ -21,7 +21,7 @@ A collection of programs written in Java for practicing with the language.
   - [DrawRhombus.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/DrawRhombus.java)
   - [Kaprekar.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/Kaprekar.java)
 
-- e02
+- e03
   - currently empty, it will contain other java classes
 
 ## Notes

@@ -22,12 +22,16 @@ public class IntSet {
         return number;
     }
 
-    /** It adds an integer to the list of integers of the class.
+    /** It asks the user to insert a list of integers to add to the integer set.
      * 
-     * @param el an integer to add.
      */
-    public void addElement(int el) {
-        elements.add(el);
+    public void addElements() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Enter numbers");
+        while (myObj.hasNextInt()) {
+            elements.add(myObj.nextInt());
+        }
+        myObj.close();
     }
     
     /** It removes an integer from the list of integers of the class.

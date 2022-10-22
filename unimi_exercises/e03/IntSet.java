@@ -123,6 +123,6 @@ class Test {  // Creating a class to test the IntSet class methods.
     public static void main(String[] args) {
         IntSet mySet = new IntSet();
         mySet.addElements();
-        mySet.size();
+        System.out.println(mySet.size());
     }
 }

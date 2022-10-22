@@ -22,7 +22,7 @@ A collection of programs written in Java for practicing with the language.
   - [Kaprekar.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e01/Kaprekar.java)
 
 - e03
-  - currently empty, it will contain other java classes
+  - [IntSet.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e03/IntSet.java)
 
 ## Notes
 - The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features. 

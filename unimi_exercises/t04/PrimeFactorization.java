@@ -14,7 +14,7 @@ public class PrimeFactorization {
                 n = n/y;
                 continue;  //Keep dividing with the same y.
             }
-            y++;  //Incrementing the divisor only when the number can't be divided by the current one .
+            y++;  //Incrementing the divisor only when the current one can't divide the number.
         }
         if (factors.size() == 0) { //If no divisor was found then the number is prime.
             factors.add(n);

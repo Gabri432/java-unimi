@@ -11,6 +11,7 @@ A collection of programs written in Java for practicing with the language.
   - (folder) unimi_exercises
     - e01 (folder)
     - e02 (folder)
+  - (folder) gui
 
 
 - e01
@@ -23,6 +24,9 @@ A collection of programs written in Java for practicing with the language.
 
 - e03
   - [IntSet.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e03/IntSet.java)
+
+- gui
+  - [Window.java/class](https://github.com/Gabri432/java-unimi/blob/master/gui/Window.java)  
 
 ## Notes
 - The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features. 

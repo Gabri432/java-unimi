@@ -11,6 +11,7 @@ A collection of programs written in Java for practicing with the language.
   - (folder) unimi_exercises
     - e01 (folder)
     - e02 (folder)
+    - t04 (folder)
   - (folder) gui
 
 
@@ -24,6 +25,9 @@ A collection of programs written in Java for practicing with the language.
 
 - e03
   - [IntSet.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/e03/IntSet.java)
+
+- t04
+  - [PrimeFactorization.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/t04/PrimeFactorization.java)
 
 - gui
   - [Window.java/class](https://github.com/Gabri432/java-unimi/blob/master/gui/Window.java)  

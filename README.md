@@ -31,8 +31,7 @@ A collection of programs written in Java for practicing with the language.
   - [PrimeFactorization.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/t04/PrimeFactorization.java)
 
 - prigioniero_exercises
-  - README.md
-  - in coming
+  - [README.md](https://github.com/Gabri432/java-unimi/tree/master/unimi_exercises/prigioniero_exercises)
 
 - gui
   - [Window.java/class](https://github.com/Gabri432/java-unimi/blob/master/gui/Window.java)  

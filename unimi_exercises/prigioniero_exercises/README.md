@@ -6,6 +6,8 @@ A collection of 'Programming 2' exercises from the Prigioniero Github repository
 ## Folder Structure
 - [EnoughSavings.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/EnoughSavings.java)
 
+- [TextToMorse.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/TextToMorse.java)
+
 ### Java version
 ```
 openjdk version "17.0.4.1" 2022-08-12

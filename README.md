@@ -46,6 +46,8 @@ OpenJDK 64-Bit Server VM Temurin-17.0.4.1+1 (build 17.0.4.1+1, mixed mode, shari
 ### Links
 [Programming 2 exercises (academic year 2021-22)](https://github.com/prog2-unimi/esercitazioni/tree/aa2122/testi)
 
+[Programming 2 exercises extra](https://github.com/lprigioniero/labprog/blob/master/esercizi)
+
 [Java Tutorial w3schools](https://www.w3schools.com/java)
 
 [Java Tutorial Oracle](https://docs.oracle.com/javase/tutorial)

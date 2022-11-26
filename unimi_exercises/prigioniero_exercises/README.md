@@ -4,7 +4,7 @@
 A collection of 'Programming 2' exercises from the Prigioniero Github repository.
 
 ## Folder Structure
-- In coming
+- [EnoughSavings.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/EnoughSavings.java)
 
 ### Java version
 ```

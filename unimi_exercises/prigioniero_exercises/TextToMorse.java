@@ -3,6 +3,13 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/*
+ * DESCRIPTION: The class will convert an alphabetic set of strings to the equivalent Morse codification. 
+ * 
+ * LINK: https://github.com/lprigioniero/labprog/blob/master/esercizi/alfabeto_morse_codifica/Testo.md
+ * 
+ */
+
 public class TextToMorse {
 
     public static HashMap<String, String> generateHashMap() {

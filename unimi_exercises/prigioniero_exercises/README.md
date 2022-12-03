@@ -11,6 +11,8 @@ A collection of 'Programming 2' exercises from the Prigioniero Github repository
 - battleship
   - [Position.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/battleship/Position.java)
 
+  - [Ship.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/battleship/Ship.java)
+
 ### Java version
 ```
 openjdk version "17.0.4.1" 2022-08-12

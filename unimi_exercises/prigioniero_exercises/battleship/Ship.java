@@ -22,7 +22,7 @@ public class Ship {
         this.isHorizontal = isHorizontal;
 
         for (int i = 0; i<length; i++) { //Marking each ship position.
-            Position p;
+            Position p = new Position(0, 0);
             if (isHorizontal) {
                 p = new Position(start.row, start.column+i);
             } else {
@@ -52,7 +52,12 @@ public class Ship {
      * @return true if the given position matches the location of the ship, false otherwise.
      */
     public boolean occupy(Position position) {
-        return (shipPositionsMap.get(position) != null); //Checking if the given position matches a key (therefore if that position is occupied by the ship).
+        for (Position shipPosition: shipPositionsMap.keySet()) {
+            if (shipPosition.equals(position)) {
+                return true;
+            }
+        }
+        return false; //Checking if the given position matches a key (therefore if that position is occupied by the ship).
     }
 
     /**
@@ -71,7 +76,12 @@ public class Ship {
      * @return true if that position was marked as hit, false otherwise.
      */
     public boolean isHit(Position position) {
-        return shipPositionsMap.get(position);
+        for (Position pos : shipPositionsMap.keySet()) {
+            if (pos.equals(position) && shipPositionsMap.get(pos) == true) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

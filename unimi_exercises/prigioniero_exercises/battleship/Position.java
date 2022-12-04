@@ -54,4 +54,18 @@ public class Position {
     public String toString() {
         return "("+ this.row + ", " + this.column + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Position)) {
+            return false;
+        }
+
+        Position position = (Position) o;
+        return Integer.compare(row, position.row) == 0 && Integer.compare(column, position.column) == 0;
+    }
 }

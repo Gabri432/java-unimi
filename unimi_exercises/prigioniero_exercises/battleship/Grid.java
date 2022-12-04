@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Grid {
 
-    public ArrayList<Ship> fleet; //Record of all the ships in the grid.
+    public ArrayList<Ship> fleet = new ArrayList<Ship>(); //Record of all the ships in the grid.
 
     /**
      * It adds a new ship to the game grid, as long as its position does not overlap with the one of another ship.

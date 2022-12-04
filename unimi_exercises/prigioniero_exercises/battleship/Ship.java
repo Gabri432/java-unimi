@@ -14,7 +14,7 @@ public class Ship {
     public final Position start;
     public final int length;
     public final boolean isHorizontal; //if true then is horizontal, vertical otherwise.
-    public HashMap<Position, Boolean> shipPositionsMap; //Record of each ship position and if it has been hit.
+    public HashMap<Position, Boolean> shipPositionsMap = new HashMap<Position, Boolean>(); //Record of each ship position and if it has been hit.
 
     public Ship(Position start, int length, boolean isHorizontal) {
         this.start = start;
@@ -42,7 +42,7 @@ public class Ship {
         String[] data = ship.split(":");
         Position p = Position.parsePosition(data[0]);
         int length = Integer.parseInt(data[1]);
-        boolean isHorizontal = (data[2] == "O") ? true : false; //"O" returns true, "V" (otherwise) returns false.
+        boolean isHorizontal = (data[2].equals("O")) ? true : false; //"O" returns true, "V" (otherwise) returns false.
         return new Ship(p, length, isHorizontal);
     }
 
@@ -105,10 +105,10 @@ public class Ship {
     public String toString() {
         String myString = start + "\n";
         for (int i = 0; i<length; i++) {
-            if (!isHorizontal) {
+            myString += "#";
+            if (!isHorizontal && i<length-1) { //length-1 is just for graphical porpuse, so that there will be no space between ships when printing them.
                 myString += "\n";
             } 
-            myString += "#";
         }
         return myString;
     }

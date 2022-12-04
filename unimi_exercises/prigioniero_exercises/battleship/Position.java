@@ -8,7 +8,7 @@ import java.util.HashMap;
  * 
  */
 
-class Position {
+public class Position {
     public final int row;
     public final int column;
 
@@ -43,9 +43,9 @@ class Position {
      * @return the corresponding position, where column and row are integers in range 0-9.
      */
     public static Position parsePosition(String position) {
-        int row = Integer.parseInt(position.substring(1)); //Example: input = B10 --> row = 10.
+        int row = Integer.parseInt(position.substring(1)) - 1; //Example: input = B10 --> row = 10.
         HashMap<String, Integer> columnsHashMap = generateColumnHashMap();
-        int column = columnsHashMap.get(position.substring(0, 2)); //Example: input = B10 --> column = 1.
+        int column = columnsHashMap.get(position.substring(0, 1)); //Example: input = B10 --> column = 1.
         Position p = new Position(row, column);
         return p;
     }

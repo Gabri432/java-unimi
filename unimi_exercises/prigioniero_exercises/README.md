@@ -15,6 +15,8 @@ A collection of 'Programming 2' exercises from the Prigioniero Github repository
 
   - [Grid.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/battleship/Grid.java)
 
+  - [Player.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/battleship/Player.java)
+
 ### Java version
 ```
 openjdk version "17.0.4.1" 2022-08-12

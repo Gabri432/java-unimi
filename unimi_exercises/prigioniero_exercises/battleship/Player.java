@@ -47,20 +47,20 @@ public class Player {
      * <p> It tells the player the result following the latest move made.</p>
      * <p> The result could be: M (miss), H (hit), S (hit and sunk). 
      * @param move a <code>Position</code> class object, that is the position chosen by the player to hit next.
-     * @return a <code> String </code>the result.
+     * @return a <code> Char </code>the result.
      */
 
-    public String result(Position move) {
+    public char result(Position move) {
         for (Ship ship : configuration) {
             ship.hit(move); //Hit a ship (if there is one in that position).
             if (ship.hasSunk()) { //Checking if the ship has sunk (assuming it didn't sink before, therefore the player isn't repeating the same move).
-                return "S";
+                return 'S';
             }
             if (ship.isHit(move)) { //If the player move has hit a ship.
-                return "H";
+                return 'H';
             }
         }
-        return "M"; //If the player move didn't hit or sink a ship.
+        return 'M'; //If the player move didn't hit or sink a ship.
     }
 
     /*
@@ -76,9 +76,9 @@ public class Player {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 Position position = new Position(i, j);
-                String res = result(position);
+                char res = result(position);
                 switch (res) {
-                    case "S", "H", "M":
+                    case 'S', 'H', 'M':
                     myGrid += res; //Recording in the grid where the player has sunk, hit or missed a ship.
                     break;
                     default:

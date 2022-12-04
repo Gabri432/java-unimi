@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /*
  * DESCRIPTION: This class will be part of a set of classes to create the game 'BattleShip'.
- * NOTE: You should first take a look at the 'Position' and 'Ship' classes to better undestand the 'Grid' class. 
+ * NOTE: You should first take a look at the 'Position' and 'Ship' classes to better understand the 'Grid' class. 
  * 
  * LINK: https://github.com/lprigioniero/labprog/blob/master/esercizi/battaglia_navale_griglia/Testo.md
  * 

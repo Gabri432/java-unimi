@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /*
  * DESCRIPTION: This class will be part of a set of classes to create the game 'BattleShip'.
- * NOTE: You should first take a look at the 'Position' class to better undestand the 'Ship' class. 
+ * NOTE: You should first take a look at the 'Position' class to better understand the 'Ship' class. 
  * 
  * LINK: https://github.com/lprigioniero/labprog/blob/master/esercizi/battaglia_navale_nave/Testo.md
  * 

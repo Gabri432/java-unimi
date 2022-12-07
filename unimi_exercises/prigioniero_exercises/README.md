@@ -8,6 +8,8 @@ A collection of 'Programming 2' exercises from the Prigioniero Github repository
 
 - [TextToMorse.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/TextToMorse.java)
 
+- [Tartaglia.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/Tartaglia.java)
+
 - battleship
   - [Position.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/battleship/Position.java)
 

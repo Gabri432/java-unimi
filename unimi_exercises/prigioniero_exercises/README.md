@@ -19,6 +19,9 @@ A collection of 'Programming 2' exercises from the Prigioniero Github repository
 
   - [Player.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/battleship/Player.java)
 
+- packet_transmission
+  - [Packet.java/.class](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/prigioniero_exercises/packet_transmission/Packet.java)
+
 ### Java version
 ```
 openjdk version "17.0.4.1" 2022-08-12

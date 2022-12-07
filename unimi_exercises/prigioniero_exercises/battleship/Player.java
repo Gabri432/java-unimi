@@ -73,21 +73,40 @@ public class Player {
     @Override
     public String toString() {
         String myGrid = "";
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                Position position = new Position(i, j);
-                char res = result(position);
-                switch (res) {
-                    case 'S', 'H', 'M':
-                    myGrid += res; //Recording in the grid where the player has sunk, hit or missed a ship.
-                    break;
-                    default:
-                    myGrid += "."; //Recording in the grid where no action was taken.
-                    break;
+        for (Position move : moves) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    Position pos = new Position(i, j);
+                    if (pos.equals(move)) {
+                        char res = result(move);
+                        switch (res) {
+                            case 'S', 'H', 'M':
+                            myGrid += res; //Recording in the grid where the player has sunk, hit or missed a ship.
+                            break;
+                        }
+                    } else {
+                        myGrid += ".";
+                    }
                 }
+                myGrid += "\n";
             }
             myGrid += "\n";
         }
         return myGrid;
+    }
+
+    public static void main(String[] args) {
+        Ship[] configuration  = {
+            new Ship(new Position(0, 4), 2, true),
+            new Ship(new Position(2, 3), 2, false),
+            new Ship(new Position(2, 2), 1, true),
+        };
+        Position[] moves = {
+            new Position(0, 0),
+            new Position(7, 4),
+            new Position(2, 7),
+        };
+        Player p = new Player(configuration, moves);
+        System.out.println(p.toString());
     }
 }

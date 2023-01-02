@@ -14,6 +14,7 @@ A collection of programs written in Java for practicing with the language.
     - t04 (folder)
     - prigioniero_exercises (folder)
   - (folder) gui
+  - (folder) penalty_game
 
 
 - e01

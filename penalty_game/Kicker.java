@@ -1,5 +1,8 @@
 package penalty_game;
 
+/** The 'Kicker' class represents the player which objective is to score 3 goals to win the game.
+ * @author Gabriele Gatti
+ */
 public class Kicker extends Player {
     private final String teamName;
 

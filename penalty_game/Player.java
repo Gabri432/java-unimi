@@ -12,28 +12,28 @@ package penalty_game;
  * @author Gabriele Gatti
  * 
  */
-public class Player {
+public abstract class Player {
     private final String name;
     private final int height, age;
     private final boolean rightHanded;
 
-    public static class Builder { //Builder Pattern to avoid using too many constructors, from 'Effective Java, 3rd Edition'.
+    public abstract static class Builder<T extends Builder<T>> { //Builder Pattern to avoid using too many constructors, from 'Effective Java, 3rd Edition'.
         private String name = "Javai sCool";
         private int height = 180;
         private int age = 20;
         private boolean rightHanded = true;
 
-        public Builder name(String n) {name = n; return this;}
-        public Builder height(int h) {height = h; return this;}
-        public Builder age(int a) {age = a; return this;}
-        public Builder rightHanded(boolean b) {rightHanded = b; return this;}
+        public Builder<T> name(String n) {name = n; return this;}
+        public Builder<T> height(int h) {height = h; return this;}
+        public Builder<T> age(int a) {age = a; return this;}
+        public Builder<T> rightHanded(boolean b) {rightHanded = b; return this;}
 
-        public Player build() {
-            return new Player(this);
-        }
+        abstract Player build();
+
+        protected abstract T self();
     }
 
-    private Player(Builder builder) {
+    protected Player(Builder<?> builder) {
         name = builder.name;
         height = builder.height;
         age = builder.age;

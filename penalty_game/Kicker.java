@@ -33,4 +33,20 @@ public class Kicker extends Player {
         //EFFECTS: returns player team name.
         return this.teamName;
     }
+
+    /**
+     * @return a randomly chosen position in which the ball will be kicked in. 
+     */
+    public Position kick() {
+        //EFFECTS: Returns the position in which the ball will be kicked in.
+        return Position.randomPosition();
+    }
+
+    /**
+     * @return the user chosen position in which the ball will be kicked in. 
+     */
+    public Position kick(Position position) {
+        //EFFECTS: Returns the position in which the ball will be kicked in.
+        return position;
+    }
 }

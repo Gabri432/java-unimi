@@ -33,5 +33,21 @@ public class GoalKeeper extends Player {
         //EFFECTS: returns player team name.
         return this.teamName;
     }
+
+    /**
+     * @return a randomly chosen position in which the goalkeeper will dive. 
+     */
+    public Position dive() {
+        //EFFECTS: Returns the position in which the ball will be kicked in.
+        return Position.randomPosition();
+    }
+
+    /**
+     * @return the user chosen position in which the goalkeeper will dive. 
+     */
+    public Position dive(Position position) {
+        //EFFECTS: Returns the position in which the ball will be kicked in.
+        return position;
+    }
 }
 

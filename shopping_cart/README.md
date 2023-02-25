@@ -61,4 +61,10 @@ No <product> was found.
 ```
 
 ## Extra
+The program will produce an output also when the following commands are inserted:
+- `LIST:PRICE` will order the products according to their price, from cheapest to most expensive;
+- `LIST:NAME` will order the products alphabetically.
+
+
+## Notes
 - No limitations regarding the number or names of the classes.

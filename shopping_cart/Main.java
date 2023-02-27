@@ -9,10 +9,15 @@ public class Main {
         Cart cart = new Cart();
         float budget = 0;
         float cost = 0;
+        int totalQuantity = 0;
         while (input.hasNextLine()) {
             String data = input.nextLine();
             if (data.equals("EXIT"))
                 break;
+            if (data.equals("TOTAL")) {
+                System.out.println("TOTAL = " + cost + ", REST = " + (budget-cost) + ", QUANTITY = " + totalQuantity);
+                continue;
+            }  
             if (!data.contains(",") && budget == 0) {
                 budget = Float.parseFloat(data);
             } else {
@@ -21,6 +26,7 @@ public class Main {
                 float price = Float.parseFloat(prdData[1].trim());
                 int quantity = Integer.parseInt(prdData[2].trim());
                 cost += price*quantity;
+                totalQuantity += quantity;
                 cart.add(quantity, new Product(name, price));
             }
         }

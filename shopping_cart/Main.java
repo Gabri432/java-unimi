@@ -9,9 +9,11 @@ public class Main {
         Cart cart = new Cart();
         float budget = 0;
         float cost = 0;
-        while (input.hasNext()) {
+        while (input.hasNextLine()) {
             String data = input.nextLine();
-            if (!data.contains(",")) {
+            if (data.equals("EXIT"))
+                break;
+            if (!data.contains(",") && budget == 0) {
                 budget = Float.parseFloat(data);
             } else {
                 String[] prdData = data.split(",");

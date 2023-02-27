@@ -10,14 +10,14 @@ public class Main {
         float budget = 0;
         float cost = 0;
         while (input.hasNext()) {
-            String data = input.next();
+            String data = input.nextLine();
             if (!data.contains(",")) {
                 budget = Float.parseFloat(data);
             } else {
                 String[] prdData = data.split(",");
                 String name = prdData[0];
-                float price = Float.parseFloat(prdData[1]);
-                int quantity = Integer.parseInt(prdData[2]);
+                float price = Float.parseFloat(prdData[1].trim());
+                int quantity = Integer.parseInt(prdData[2].trim());
                 cost += price*quantity;
                 cart.add(new Product(name, price));
             }
@@ -25,5 +25,6 @@ public class Main {
         input.close();
         System.out.println(budget);
         System.out.println(cost);
+        System.out.println(cart);
     }      
 }

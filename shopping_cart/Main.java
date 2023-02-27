@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Running.");
         Scanner input = new Scanner(System.in);
         Cart cart = new Cart();
-        int budget = 0;
+        float budget = 0;
         float cost = 0;
         while (input.hasNext()) {
             String data = input.next();
             if (!data.contains(",")) {
-                budget = Integer.parseInt(data);
+                budget = Float.parseFloat(data);
             } else {
                 String[] prdData = data.split(",");
                 String name = prdData[0];

@@ -102,7 +102,7 @@ public class Cart {
     @Override
     public String toString() {
       final StringBuilder result = new StringBuilder();
-      for (final Product p : cart.keySet()) result.append(cart.get(p) + " " + p + "\n");
+      for (final Product p : cart.keySet()) result.append(p + ", quantity: "+ cart.get(p) +"\n");
       return result.toString();
     }
 }

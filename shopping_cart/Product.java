@@ -20,7 +20,7 @@ public class Product {
      * @throws NullPointerException if the name is a null string.
      * @throws IllegalArgumentException if the price is a non-positive float.
      */
-    Product(String name, float price) {
+    public Product(String name, float price) {
         this.name = Objects.requireNonNull(name, "The product name cannot be null.");
         if (price < 0.01) {
             throw new IllegalArgumentException("The product price cannot be non-positive.");

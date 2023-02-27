@@ -15,6 +15,11 @@ public class Cart {
     //Representation Invariant: The product list cannot be null or contain null product name.
 
     /**
+     * Creates a new empty cart.
+     */
+    public Cart() {}
+
+    /**
      * Builds a cart starting from a map in which each product is associated to its quantity.
      * @param cart a product-quantity map.
      * @throws NullPointerException if the map is null.

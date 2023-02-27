@@ -21,7 +21,7 @@ public class Main {
                 float price = Float.parseFloat(prdData[1].trim());
                 int quantity = Integer.parseInt(prdData[2].trim());
                 cost += price*quantity;
-                cart.add(new Product(name, price));
+                cart.add(quantity, new Product(name, price));
             }
         }
         input.close();

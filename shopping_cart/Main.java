@@ -17,22 +17,34 @@ public class Main {
             if (data.equals("TOTAL")) {
                 System.out.println("TOTAL = " + cost + ", REST = " + (budget-cost) + ", QUANTITY = " + totalQuantity);
                 continue;
-            }  
+            }
+            if (data.contains("REMOVE")) {
+                String[] prdData = (data.split(":"))[1].split(",");
+                Product prd = formatProduct(prdData[0],prdData[1]);
+                int quantity = Integer.parseInt(prdData[2].trim());
+                cart.remove(quantity, prd);
+                cost -= prd.price;
+                quantity -= 1;
+                System.out.println(cart);
+                continue;
+            }
             if (!data.contains(",") && budget == 0) {
                 budget = Float.parseFloat(data);
             } else {
                 String[] prdData = data.split(",");
-                String name = prdData[0];
-                float price = Float.parseFloat(prdData[1].trim());
+                Product prd = formatProduct(prdData[0],prdData[1]);
                 int quantity = Integer.parseInt(prdData[2].trim());
-                cost += price*quantity;
+                cost += prd.price*quantity;
                 totalQuantity += quantity;
-                cart.add(quantity, new Product(name, price));
+                cart.add(quantity, prd);
             }
         }
         input.close();
-        System.out.println(budget);
-        System.out.println(cost);
         System.out.println(cart);
-    }      
+    }  
+    
+    public static Product formatProduct(String prdName, String prdPrice) {
+        float price = Float.parseFloat(prdPrice.trim());
+        return new Product(prdName.trim(), price);
+    }
 }

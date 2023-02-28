@@ -33,10 +33,14 @@ public class Main {
             } else {
                 String[] prdData = data.split(",");
                 Product prd = formatProduct(prdData[0],prdData[1]);
-                int quantity = Integer.parseInt(prdData[2].trim());
-                cost += prd.price*quantity;
-                totalQuantity += quantity;
-                cart.add(quantity, prd);
+                if (prdData.length > 2) {
+                    int quantity = Integer.parseInt(prdData[2].trim());
+                    cost += prd.price*quantity;
+                    totalQuantity += quantity;
+                    cart.add(quantity, prd);
+                } else {
+                    cart.add(prd);
+                }
             }
         }
         input.close();

@@ -90,11 +90,11 @@ public class Cart {
      * @throws NullPointerException if the product is null.
      * @throws NoSuchElementException if the product was not in the cart.
      */
-    public Product getProduct(Product product) {
+    public void searchProduct(Product product) {
         Objects.requireNonNull(product);
         if (!cart.containsKey(product)) throw new NoSuchElementException("Cannot find the product "+ product);
         for (Map.Entry<Product, Integer> e: cart.entrySet()) {
-            if (e.getKey().equals(product)) return e.getKey();
+            if (e.getKey().equals(product)) System.out.println(product + ", quantity:" + cart.get(product));
         }
         throw new NoSuchElementException("No product "+product.name +" with price "+ product.price + "was found");
     }

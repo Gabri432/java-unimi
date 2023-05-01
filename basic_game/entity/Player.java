@@ -61,6 +61,16 @@ public class Player extends Entity {
             direction = "right";
             x += speed;
         }
+
+        
+        imageCounter++;
+        if (imageCounter > 60) {
+            if (imageNum == 1) {
+                imageNum = 2;
+            } else if (imageNum == 2) {
+                imageNum = 1;
+            }
+        }
     }
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.WHITE);
@@ -68,18 +78,21 @@ public class Player extends Entity {
         BufferedImage image = null;
         switch(direction) {
             case "up":
-            image = up1;
+            if (imageNum == 1) image = up1;
+            if (imageNum == 2) image = up2;
             break;
             case "down":
-            image = down1;
+            if (imageNum == 1) image = down1;
+            if (imageNum == 2) image = down2;
             break;
             case "left":
-            image = left1;
+            if (imageNum == 1) image = left1;
+            if (imageNum == 2) image = left2;
             break;
             case "right":
-            image = right1;
+            if (imageNum == 1) image = right1;
+            if (imageNum == 2) image = right2;
             break;
-            default:
         }
 
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);

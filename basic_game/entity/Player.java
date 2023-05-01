@@ -30,45 +30,47 @@ public class Player extends Entity {
     }
     public void getPlayerImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_up_image-1.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_down_image-1.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_left_image-1.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_right_image-1.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_up_image-1.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_down_image-1.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_left_image-1.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_right_image-1.png"));
 
-            up2 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_up_image-2.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_down_image-2.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_left_image-2.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("player_assets/player_right_image-2.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_up_image-2.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_down_image-2.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_left_image-2.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("assets/player_assets/player_right_image-2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void update() {
-        if (keyH.upPressed) {
-            direction = "up";
-            y -= speed;
-        }
-        if (keyH.downPressed) {
-            direction = "down";
-            y += speed;
-        }
-        if (keyH.leftPressed) {
-            direction = "left";
-            x -= speed;
-        }
-        if (keyH.rightPressed) {
-            direction = "right";
-            x += speed;
-        }
+        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
+            if (keyH.upPressed) {
+                direction = "up";
+                y -= speed;
+            }
+            if (keyH.downPressed) {
+                direction = "down";
+                y += speed;
+            }
+            if (keyH.leftPressed) {
+                direction = "left";
+                x -= speed;
+            }
+            if (keyH.rightPressed) {
+                direction = "right";
+                x += speed;
+            }
 
-        
-        imageCounter++;
-        if (imageCounter > 60) {
-            if (imageNum == 1) {
-                imageNum = 2;
-            } else if (imageNum == 2) {
-                imageNum = 1;
+            imageCounter++;
+            if (imageCounter > 12) {
+                if (imageNum == 1) {
+                    imageNum = 2;
+                } else if (imageNum == 2) {
+                    imageNum = 1;
+                }
+                imageCounter = 0;
             }
         }
     }

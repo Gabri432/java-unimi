@@ -20,10 +20,10 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_A:
             leftPressed = true;
             break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_D:
             rightPressed = true;
             break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_S:
             downPressed = true;
             break;
         }
@@ -39,10 +39,10 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_A:
             leftPressed = false;
             break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_D:
             rightPressed = false;
             break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_S:
             downPressed = false;
             break;
         }

@@ -25,17 +25,20 @@ public class TileManager {
 
     public void getTileImage() {
         try {
-            tile[0] = new Tile();
+            tile[0] = new Tile(); //Grass
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/grass-2.png"));
 
-            tile[1] = new Tile();
+            tile[1] = new Tile(); //Sea/river
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/sea-1.png"));
 
-            tile[2] = new Tile();
+            tile[2] = new Tile(); //Trees
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/trees-2.png"));
 
-            tile[3] = new Tile();
+            tile[3] = new Tile(); //Dirt/Road
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/dirt-1.png"));
+
+            tile[4] = new Tile(); //Bridge
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/bridge-1.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }

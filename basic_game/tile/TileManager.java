@@ -12,8 +12,8 @@ import basic_game.main.GamePanel;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
-    int mapTileNum[] [];
+    public Tile[] tile;
+    public int mapTileNum[] [];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -30,9 +30,11 @@ public class TileManager {
 
             tile[1] = new Tile(); //Sea/river
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/sea-1.png"));
+            tile[1].collision = true;
 
             tile[2] = new Tile(); //Trees
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/trees-2.png"));
+            tile[2].collision = true;
 
             tile[3] = new Tile(); //Dirt/Road
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/dirt-1.png"));

@@ -1,5 +1,6 @@
 package basic_game.entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Entity {
@@ -10,4 +11,7 @@ public class Entity {
 
     public int imageCounter = 0;
     public int imageNum = 1;
+
+    public Rectangle solidArea;
+    public boolean collisionOn = false;
 }

@@ -28,8 +28,8 @@ public class TileManager {
             tile[0] = new Tile(); //Grass
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/grass-2.png"));
 
-            tile[1] = new Tile(); //Sea/river
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/sea-1.png"));
+            tile[1] = new Tile(); //Water/river
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/water-1.png"));
             tile[1].collision = true;
 
             tile[2] = new Tile(); //Trees

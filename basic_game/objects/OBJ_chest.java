@@ -13,5 +13,6 @@ public class OBJ_chest extends SuperObject {
         } catch(IOException e) {
             e.printStackTrace();
         }
+        collision = true;
     }
 }

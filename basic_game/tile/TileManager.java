@@ -33,7 +33,7 @@ public class TileManager {
             tile[1].collision = true;
 
             tile[2] = new Tile(); //Trees
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/trees-2.png"));
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("assets/enviroment/tree-1.png"));
             tile[2].collision = true;
 
             tile[3] = new Tile(); //Dirt/Road

@@ -85,7 +85,7 @@ public class Player extends Entity {
             }
 
             imageCounter++;
-            if (imageCounter > 12) {
+            if (imageCounter > 10) {
                 if (imageNum == 1) {
                     imageNum = 2;
                 } else if (imageNum == 2) {

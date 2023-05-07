@@ -17,7 +17,7 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
-    int hasChest = 0;
+    public int hasChest = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;

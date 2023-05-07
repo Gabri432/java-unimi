@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 import basic_game.objects.OBJ_chest;
 
@@ -15,6 +16,8 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+    double playTime;
+    DecimalFormat dFormat = new DecimalFormat("0.00");
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -37,7 +40,7 @@ public class UI {
             int x, y;
             String text;
             int textLength;
-            text = "You have completed the game";
+            text = "You have completed the game in " + dFormat.format(playTime) + "!";
             textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.tileSize/2 - textLength/2;
             y = gp.tileSize/2 - (gp.tileSize*3);
@@ -45,6 +48,9 @@ public class UI {
         }
         g2.drawImage(chestImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
         g2.drawString("x = "+ gp.player.hasChest, 74, 60);
+
+        playTime += (double) 1/60;
+        g2.drawString("Time: "+dFormat.format(playTime), gp.tileSize*11, 65);
 
         if (messageOn) {
             g2.setFont(g2.getFont().deriveFont(30F));

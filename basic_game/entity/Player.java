@@ -110,14 +110,13 @@ public class Player extends Entity {
                 case "chest":
                 hasChest++;
                 gp.obj[index] = null;
-                System.out.println("Chest!" + hasChest);
+                gp.ui.showMessage("You found a chest!");
                 break;
                 case "Door":
                 if (hasChest > 0) {
                     gp.obj[index] = null;
                     hasChest--;
                 }
-                System.out.println("Chest!" + hasChest);
                 break;
             }
         }

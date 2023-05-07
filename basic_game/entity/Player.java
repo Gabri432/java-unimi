@@ -116,6 +116,8 @@ public class Player extends Entity {
                 if (hasChest > 0) {
                     gp.obj[index] = null;
                     hasChest--;
+                    gp.ui.showMessage("Game is finished!");
+                    gp.ui.gameFinished = true;
                 }
                 break;
             }

@@ -14,6 +14,7 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
+    public boolean gameFinished = false;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -28,8 +29,20 @@ public class UI {
     }
 
     public void draw(Graphics2D g2) {
+
         g2.setFont(arial_40);
         g2.setColor(Color.WHITE);
+
+        if (gameFinished) {
+            int x, y;
+            String text;
+            int textLength;
+            text = "You have completed the game";
+            textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+            x = gp.tileSize/2 - textLength/2;
+            y = gp.tileSize/2 - (gp.tileSize*3);
+            g2.drawString(text, x, y);
+        }
         g2.drawImage(chestImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
         g2.drawString("x = "+ gp.player.hasChest, 74, 60);
 

@@ -46,6 +46,26 @@ public class Song {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Song)) {
+            return false;
+        }
+        Song song = (Song) obj;
+        if (song.duration != this.duration) return false;
+        if (song.title != this.title) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, duration);
+    }
+
+    @Override
     public String toString() {
         return "'"+ this.title + "'" + fromSecondsToFormat();
     }

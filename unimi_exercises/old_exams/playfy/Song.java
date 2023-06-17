@@ -13,6 +13,8 @@ public class Song {
     //title must be at least one character long.
     //duration must be at least 1 second long.
 
+    //AB: represents an object with two properties: title and duration.
+
     /**
      * It constructs a Song object starting from its title and duration. 
      * @param title a String that represents the song title.

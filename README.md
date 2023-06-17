@@ -13,6 +13,9 @@ A collection of programs written in Java for practicing with the language.
     - e02 (folder)
     - t04 (folder)
     - prigioniero_exercises (folder)
+    - old_exams (folder)
+      - bancarelle (folder)
+      - playfy (folder)
   - (folder) gui
   - (folder) penalty_game
 
@@ -33,6 +36,11 @@ A collection of programs written in Java for practicing with the language.
 
 - prigioniero_exercises
   - [README.md](https://github.com/Gabri432/java-unimi/tree/master/unimi_exercises/prigioniero_exercises)
+
+- playfy
+  - [Song.java](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/old_exams/playfy/Song.java)
+  - [Album.java](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/old_exams/playfy/Album.java)
+  - [Playlist.java](https://github.com/Gabri432/java-unimi/blob/master/unimi_exercises/old_exams/playfy/Playlist.java)
 
 - gui
   - [Window.java/class](https://github.com/Gabri432/java-unimi/blob/master/gui/Window.java)  

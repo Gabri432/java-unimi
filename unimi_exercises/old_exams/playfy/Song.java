@@ -6,8 +6,9 @@ import java.util.Objects;
  * Immutable class that represents a song given its title and duration.
  */
 public class Song {
-    public final String title;
+    public String title;
     public final int duration;
+    public final String albumTitle; 
 
     //RI: title and duration are immutable and not null.
     //title must be at least one character long.
@@ -22,16 +23,21 @@ public class Song {
      * @throws IllegalArgumentException if the song duration is non-positive or the song title is empty.
      * @throws NullPointerException if the song title is null.
      */
-    public Song(String title, int duration) {
+    public Song(String title, int duration, String albumTitle) {
         Objects.requireNonNull(title,  "Title cannot be an empty string.");
+        Objects.requireNonNull(albumTitle,  "Album title cannot be an empty string.");
         if (duration <= 0) {
             throw new IllegalArgumentException("Song duration cannot be non-positive.");
         } 
         if (title.length() < 1) {
-            throw new IllegalArgumentException("Song name has to contain at least one character.");
+            throw new IllegalArgumentException("Song title has to contain at least one character.");
+        }
+        if (albumTitle.length() < 1) {
+            throw new IllegalArgumentException("Album title has to contain at least one character.");
         }
         this.title = title;
         this.duration = duration;
+        this.albumTitle = albumTitle;
     }
 
     /**

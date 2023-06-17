@@ -29,6 +29,7 @@ public class Album {
         LinkedList<Song> mySongs = new LinkedList<>();
         int currentDuration = 0;
         for (var i = 0; i<songs.size(); i++) {
+            songs.iterator().next().title = this.title;
             mySongs.add(i, songs.iterator().next());
             currentDuration += songs.iterator().next().duration;
         }

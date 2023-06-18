@@ -45,8 +45,8 @@ public class Song {
      * @return a String in the format hh:mm:ss representing the song duration.
      */
     public String fromSecondsToFormat() {
-        int hours = this.duration%3600; //7295 seconds => 2 hours
-        int minutes = (this.duration - hours*3600)%60; //7295 seconds - 2 hours = 95 seconds => 1 minutes
+        int hours = (int) Math.floor(this.duration/3600); //7295 seconds => 2 hours
+        int minutes = (int) Math.floor((this.duration - hours*3600)/60); //7295 seconds - 2 hours = 95 seconds => 1 minutes
         int seconds = (this.duration - hours*3600 - minutes*60)%60; //7295 seconds - 2 hours - 1 minutes = 35 seconds
         return hours+":"+minutes+":"+seconds; // 2 (hours): 1 (minute): 35 (seconds)
     }

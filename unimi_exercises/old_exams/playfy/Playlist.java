@@ -1,5 +1,6 @@
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * Mutable class that represents a Playlist given its name and a list of songs. 
@@ -10,7 +11,7 @@ public class Playlist {
     public LinkedList<Song> songs;
     public final String title;
 
-    //RI: title cannot be or empty null.
+    //RI: title cannot be empty or null.
     //title must be at least one character long.
 
     //AB: a list of song objects will represent the list of songs of a playlist.
@@ -23,6 +24,8 @@ public class Playlist {
      * @throws IllegalArgumentException if the title is not at least 1 character long.
      */
     public Playlist(final String title) {
+        Objects.requireNonNull(title, "The playlist title cannot be null.");
+        if (title.length() < 1) throw new IllegalArgumentException("The playlist title must contain at least one character");
         this.title = title;
     }
 
@@ -34,10 +37,14 @@ public class Playlist {
      * @throws IllegalArgumentException if the title is not at least 1 character long.
      */
     public Playlist(final String title, LinkedList<Song> songs) {
+        Objects.requireNonNull(title, "The playlist title cannot be null.");
+        if (title.length() < 1) throw new IllegalArgumentException("The playlist title must contain at least one character.");
         this.title = title;
         LinkedList<Song> myList = new LinkedList<>();
         while (songs.iterator().hasNext()) {
-            myList.add(songs.iterator().next());
+            Song currentSong = songs.iterator().next();
+            myList.add(currentSong);
+            duration += currentSong.duration;
         }
         this.songs = myList;
     }
@@ -48,7 +55,11 @@ public class Playlist {
      * @throws NullPointerException if the song is null.
      */
     public void addSong(Song song) {
-        if (!this.songs.contains(song)) this.songs.add(song);
+        Objects.requireNonNull(song, "The song to be added cannot be null.");
+        if (!this.songs.contains(song)) {
+            this.songs.add(song); 
+            this.duration += song.duration;
+        }
     }
 
     /**
@@ -57,7 +68,11 @@ public class Playlist {
      * @throws NullPointerException if the song is null.
      */
     public void removeSong(Song song) {
-        if (this.songs.contains(song)) this.songs.remove(song);
+        Objects.requireNonNull(song, "The song to be removed cannot be null.");
+        if (this.songs.contains(song)) {
+            this.songs.remove(song);
+            this.duration -= song.duration;
+        }
     }
 
     /**
@@ -67,6 +82,8 @@ public class Playlist {
      * @throws IllegalArgumentException if the album is a empty string.
      */
     public void printSongs(String albumTitle) {
+        Objects.requireNonNull(albumTitle, "The album title cannot be null.");
+        if (albumTitle.length() < 1) throw new IllegalArgumentException("The album title must contain at least one character.");
         while (songs.iterator().hasNext()) {
             Song currentSong = songs.iterator().next();
             if (currentSong.albumTitle.equals(albumTitle)) {

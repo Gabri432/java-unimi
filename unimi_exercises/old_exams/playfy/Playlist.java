@@ -29,14 +29,14 @@ public class Playlist {
         }
     }
     
-    public HashSet<String> returnAlbums() {
+    public void printAlbums() {
         HashSet<String> setOfAlbumTitles = new HashSet<>();
         while (songs.iterator().hasNext()) {
             if (!setOfAlbumTitles.contains(songs.iterator().next().albumTitle)) {
                 setOfAlbumTitles.add(songs.iterator().next().albumTitle);
+                System.out.println(songs.iterator().next().albumTitle);
             }
         }
-        return setOfAlbumTitles;
     }
 
     @Override

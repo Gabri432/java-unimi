@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Playlist {
@@ -19,10 +20,33 @@ public class Playlist {
 
     public void addSong() {}
     public void removeSong() {}
-    public void printSongs() {}
+    public void printSongs(String albumTitle) {
+        while (songs.iterator().hasNext()) {
+            Song currentSong = songs.iterator().next();
+            if (currentSong.albumTitle.equals(albumTitle)) {
+                System.out.println(currentSong);
+            }
+        }
+    }
+    
+    public HashSet<String> returnAlbums() {
+        HashSet<String> setOfAlbumTitles = new HashSet<>();
+        while (songs.iterator().hasNext()) {
+            if (!setOfAlbumTitles.contains(songs.iterator().next().albumTitle)) {
+                setOfAlbumTitles.add(songs.iterator().next().albumTitle);
+            }
+        }
+        return setOfAlbumTitles;
+    }
 
     @Override
     public String toString() {
-        return super.toString();
+        String text = "Playlist name: " + title + "\n";
+        int index = 1;
+        while (songs.iterator().hasNext()) {
+            Song currentSong = songs.iterator().next();
+            text =+ index +" - \"" + currentSong.title + "\" (" + currentSong.duration + "), (from"+ currentSong.albumTitle + ") \n";
+        }
+        return text + "Total duration: " + duration;
     }
 }

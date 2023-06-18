@@ -3,11 +3,19 @@ import java.util.Objects;
 
 /**
  * Immutable class that represents an Album given its title and a list of songs.
+ * An Album is a non-empty list of songs.
  */
 public class Album {
     public final String title;
     public final int duration;
     public final LinkedList<Song> songs;
+
+    //RI: title cannot be null or empty string.
+    //duration must be at least 1 (second).
+    //songs must contain at least one element (an album cannot be empty).
+
+    //AB: a list of song objects will represent the list of songs of an album.
+    //The ith item of the list is the ith song of the album.  
 
     /**
      * It constructs an Album object starting from its title and a List of songs.
@@ -18,7 +26,7 @@ public class Album {
      */
     public Album(String title, final LinkedList<Song> songs) {
         Objects.requireNonNull(title,  "Title cannot be a null string.");
-        Objects.requireNonNull(songs,  "The list of songs cannot be null");
+        Objects.requireNonNull(songs,  "The list of songs cannot be null.");
         if (title.length() < 1) {
             throw new IllegalArgumentException("Album title has to contain at least one character.");
         }

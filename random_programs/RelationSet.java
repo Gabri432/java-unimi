@@ -1,6 +1,7 @@
 package random_programs;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -30,6 +31,26 @@ public class RelationSet {
         }
 
         @Override
+        public boolean equals(Object obj) {
+            if (obj == this) {
+                return true;
+            }
+
+            if (!(obj instanceof Relation)) {
+                return false;
+            }
+            Relation r = (Relation) obj;
+            if (r.a != this.a) return false;
+            if (r.b != this.b) return false;
+                return super.equals(obj);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(a, b);
+        }
+
+        @Override
         public String toString() {
             return "(" +  a +", "+ b + ")";
         }
@@ -39,17 +60,19 @@ public class RelationSet {
      * It create a set of relations.
      */
     public RelationSet() {
-        //Set<Relation> relations = new HashSet<>();
-        //relations.add(new Relation(1, 1)); //(1, 1)
-        //relations.add(new Relation(2, 2)); //(2, 2)
-        //relations.add(new Relation(3, 3)); //(3, 3)
-        //this.relations = relations;
+        Set<Relation> relations = new HashSet<>();
+        this.relations = relations;
         Set<Integer> distinctElements = new HashSet<>();
+        this.distinctElements = distinctElements;
+        /*
+        relations.add(new Relation(1, 1)); //(1, 1)
+        relations.add(new Relation(2, 2)); //(2, 2)
+        relations.add(new Relation(3, 3)); //(3, 3)
         for (var relation : relations) {
             distinctElements.add(relation.a);
             distinctElements.add(relation.b);
         }
-        this.distinctElements = distinctElements;
+        */
     }
 
     //(x , y) in Set and (y, z) in Set => (x, z) in Set (x, y and z not necessarly different).
@@ -104,6 +127,10 @@ public class RelationSet {
 
     public void addRelation(int a, int b) {
         relations.add(new Relation(a, b));
+        for (var relation : relations) {
+            distinctElements.add(relation.a);
+            distinctElements.add(relation.b);
+        }
     }
 
     @Override

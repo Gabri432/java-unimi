@@ -50,7 +50,7 @@ public class Shop {
         }
 
         /**
-         * Removes a toy from the inventory, if found.
+         * Removes a toy from the inventory, if found, and updates its quantity on the inventory.
          * @param toy the Toy object to remove.
          * @throws NullPointerException if the Toy object is null.
          */
@@ -123,6 +123,20 @@ public class Shop {
         Objects.requireNonNull("Toy cannot be null.");
         if (!inventory.isInInventory(toy)) throw new IllegalArgumentException("No "+ toy + " was found.");
         return toy.price;
+    }
+
+    /**
+     * Removes a certain quantity of a toy from the inventory.
+     * @param toy the Toy class object to remove from the inventory.
+     * @param quantity an Integer representing the quantity of that object to remove.
+     * @throws NullPointerException if toy is null.
+     * @throws IllegalArgumentException if quantity is non-positive.
+     */
+    public void sell(Toy toy, int quantity) {
+        if (quantity < 1) throw new IllegalArgumentException("Quantity must be positive.");
+        for (var i = 0; i<quantity; i++) {
+            inventory.removeToy(toy);
+        }
     }
 
     @Override

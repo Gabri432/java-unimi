@@ -1,7 +1,6 @@
 package random_programs;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -9,8 +8,8 @@ import java.util.Set;
  * DISCLAIMER: It does <strong>not</strong> guarantee 100% accuracy. I do not recommend using it as a tool for your homeworks.
  */
 public class RelationSet {
-    public final Set<Relation> relations; //The set of relations. Like R = {(a, a), (a, b), ...}.
-    public final Set<Integer> distinctElements;
+    public Set<Relation> relations; //The set of relations. Like R = {(a, a), (a, b), ...}.
+    public Set<Integer> distinctElements;
 
     /**
      * A Relation class object represents a relation between two elements a and b.
@@ -32,21 +31,19 @@ public class RelationSet {
 
         @Override
         public String toString() {
-            return "( + " +  a +" "+ b + ")";
+            return "(" +  a +", "+ b + ")";
         }
     }
 
     /**
      * It create a set of relations.
-     * @throws NullPointerException if the set of relations is null.
      */
-    public RelationSet(Set<Relation> relations) {
-        Objects.requireNonNull(relations, "The set of relations cannot be null.");
+    public RelationSet() {
         //Set<Relation> relations = new HashSet<>();
         //relations.add(new Relation(1, 1)); //(1, 1)
         //relations.add(new Relation(2, 2)); //(2, 2)
         //relations.add(new Relation(3, 3)); //(3, 3)
-        this.relations = relations;
+        //this.relations = relations;
         Set<Integer> distinctElements = new HashSet<>();
         for (var relation : relations) {
             distinctElements.add(relation.a);
@@ -103,6 +100,10 @@ public class RelationSet {
     public boolean isOrder() {
         if (this.isTransitive() && this.isReflexive() && this.isAntiSymmetric()) return true;
         return false;
+    }
+
+    public void addRelation(int a, int b) {
+        relations.add(new Relation(a, b));
     }
 
     @Override

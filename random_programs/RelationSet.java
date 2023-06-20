@@ -6,7 +6,8 @@ import java.util.Set;
 
 /**
  * The RelationChecker offers a set of methods to classify the property of a set of relationships. <br /><br />
- * DISCLAIMER: It does <strong>not</strong> guarantee 100% accuracy. I do not recommend using it as a tool for your homeworks.
+ * DISCLAIMER: It does <strong>not</strong> guarantee 100% accuracy. I do not recommend using it as a tool for your homeworks. <br /><br />
+ * NOTE: A relation can be both symmetric and antisymmetric.
  */
 public class RelationSet {
     public Set<Relation> relations; //The set of relations. Like R = {(a, a), (a, b), ...}.
@@ -42,7 +43,7 @@ public class RelationSet {
             Relation r = (Relation) obj;
             if (r.a != this.a) return false;
             if (r.b != this.b) return false;
-                return super.equals(obj);
+            return true;
         }
 
         @Override
@@ -80,8 +81,8 @@ public class RelationSet {
         if (distinctElements.size() < 2) return true; //vacuous truth.
         for (var relation : relations) {
             for (var element : distinctElements) {
-                if (relations.contains(new Relation(relation.b, element)) && 
-                    !relations.contains(new Relation(relation.a, element))) return false;
+                if (this.isInRelation(new Relation(relation.b, element)) && 
+                    !this.isInRelation(new Relation(relation.a, element))) return false;
             }
         }
         return true;
@@ -91,7 +92,7 @@ public class RelationSet {
     public boolean isReflexive() {
         if (distinctElements.size() < 2) return true; //vacuous truth.
         for (var element : distinctElements) {
-            if (!this.relations.contains(new Relation(element, element))) return false;
+            if (!this.isInRelation(new Relation(element, element))) return false;
         }
         return true;
     }
@@ -100,7 +101,7 @@ public class RelationSet {
     public boolean isSymmetric() {
         if (distinctElements.size() < 2) return true; //vacuous truth.
         for (var relation : relations) {
-            if (!relations.contains(new Relation(relation.b, relation.a))) return false;
+            if (!this.isInRelation(new Relation(relation.b, relation.a))) return false;
         }
         return true;
     }
@@ -109,7 +110,7 @@ public class RelationSet {
     public boolean isAntiSymmetric() {
         if (distinctElements.size() < 2) return true; //vacuous truth.
         for (var relation : relations) {
-            if (relations.contains(new Relation(relation.b, relation.a)) &&
+            if (this.isInRelation(new Relation(relation.b, relation.a)) &&
                relation.b != relation.a) return false;
         }
         return true;
@@ -131,6 +132,13 @@ public class RelationSet {
             distinctElements.add(relation.a);
             distinctElements.add(relation.b);
         }
+    }
+
+    public boolean isInRelation(Relation r) {
+        for (var rel : relations) {
+            if (rel.equals(r)) return true;
+        }
+        return false;
     }
 
     @Override

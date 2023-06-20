@@ -22,17 +22,17 @@ public class Shop {
         Objects.requireNonNull("Shop owner cannot be null.");
         if (owner.trim().length() < 1) throw new IllegalArgumentException("Owner must be at least one character long.");
         this.owner = owner;
-        //this.inventory = new Inventory();
+        this.inventory = new Inventory();
     }
 
     class Inventory {
-        private Map<Toy, Integer> inventory;
+        private Map<Toy, Integer> toys;
         
         /**
          * It constructs a new Inventory class object.
          */
         Inventory() {
-            this.inventory = new HashMap<>();
+            this.toys = new HashMap<>();
         }
 
         /**
@@ -42,10 +42,10 @@ public class Shop {
          */
         public void addToy(Toy toy) {
             Objects.requireNonNull("Toy cannot be null.");
-            if (inventory.containsKey(toy)) {
-                inventory.put(toy, inventory.get(toy)+1);
+            if (toys.containsKey(toy)) {
+                toys.put(toy, toys.get(toy)+1);
             } else {
-                inventory.putIfAbsent(toy, 1);
+                toys.putIfAbsent(toy, 1);
             }
         }
 
@@ -56,11 +56,11 @@ public class Shop {
          */
         public void removeToy(Toy toy) {
             Objects.requireNonNull("Toy cannot be null.");
-            if (inventory.containsKey(toy)) {
-                if (inventory.get(toy) == 1) {
-                    inventory.remove(toy);
+            if (toys.containsKey(toy)) {
+                if (toys.get(toy) == 1) {
+                    toys.remove(toy);
                 } else {
-                    inventory.put(toy, inventory.get(toy)-1);
+                    toys.put(toy, toys.get(toy)-1);
                 }
             }
         }
@@ -73,18 +73,43 @@ public class Shop {
          */
         public boolean isInInventory(Toy toy) {
             Objects.requireNonNull("Toy cannot be null");
-            if (inventory.get(toy).equals(null)) return false;
+            if (toys.get(toy).equals(null)) return false;
             return true;
+        }
+
+        /**
+         * Returns the toy and its quantity in the inventory, if found.
+         * @param toy the Toy class object to get.
+         * @return a map <Toy, Integer> where the key is the desired object and the integer is its quantity.
+         * @throws NullPointerException if toy is null.
+         */
+        public int getQuantity(Toy toy) {
+            if (isInInventory(toy)) {
+                return toys.get(toy);
+            }
+            return 0;
         }
 
         @Override
         public String toString() {
             final StringBuilder s = new StringBuilder();
-            for (var toyObj : inventory.entrySet()) {
+            for (var toyObj : toys.entrySet()) {
                 s.append(toyObj.getValue() + " " + toyObj.getKey().name  + " of " + toyObj.getKey().material + "\n");
             }
             return "";
         }
+    }
+
+    /**
+     * Returns the quantity of the toy.
+     * @param toy the Toy object to which find the quantity.
+     * @return a integer representing the quantity of the object.
+     * @throws NullPointerException if toy is null.
+     * @throws IllegalArgumentException if toy was not found in the inventory. 
+     */
+    public int quantity(Toy toy) {
+        if (!inventory.isInInventory(toy)) throw new IllegalArgumentException("No "+ toy + " was found.");
+        return inventory.toys.get(toy);
     }
 
     /**
@@ -97,7 +122,7 @@ public class Shop {
     public float price(Toy toy) {
         Objects.requireNonNull("Toy cannot be null.");
         if (!inventory.isInInventory(toy)) throw new IllegalArgumentException("No "+ toy + " was found.");
-        return 0;
+        return toy.price;
     }
 
     @Override

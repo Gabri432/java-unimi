@@ -18,6 +18,7 @@ A collection of programs written in Java for practicing with the language.
       - playfy (folder)
   - (folder) gui
   - (folder) penalty_game
+  - (folder) random_programs
 
 
 - e01
@@ -44,6 +45,9 @@ A collection of programs written in Java for practicing with the language.
 
 - gui
   - [Window.java/class](https://github.com/Gabri432/java-unimi/blob/master/gui/Window.java)  
+
+- random_programs
+  - [RelationSet.java](https://github.com/Gabri432/java-unimi/blob/master/random_programs/RelationSet.java)
 
 ## Notes
 - The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features. 

@@ -9,15 +9,15 @@ import java.util.Set;
  * It also returns the most similar words in the vocabulary to the typo.
  */
 public class TypoChecker {
-    private final String typo = "bice"; //Typo Example
+    private final String typo; //Typo Example
 
     private final Set<String> vocabulary; //Using a vocabulary as set of words to compare.
 
-    //Representation Invariant: 'vocabulary' cannot be a null or empty set.
+    //Representation Invariant: 'vocabulary' cannot be a null or empty set, 'typo' cannot be an empty string.
     //Abstraction Function: 'vocabulary' is a Set of String objects.
 
     /**
-     * Generates a vocabulary to use for the comparisons between typo and possible words.
+     * Compares a pre-defined typo with a set of pre-defined words in a vocabulary to find the best matches.
      */
     public TypoChecker() {
         Set<String> mySet = new HashSet<>();
@@ -31,18 +31,44 @@ public class TypoChecker {
         mySet.add("hamburger");
         mySet.add("biology");
         this.vocabulary = mySet;
+        this.typo = "bice";
     }
 
     /**
-     * Generates a vocabulary to use for the comparisons between typo and possible words.
-     * @throws NullPointerException if vocabulary is null or contains null strings.
-     * @throws IllegalArgumentException if vocabulary contains any empty string.
+     * Compare the user-given typo with the set of words in the user-given vocabulary to find the best matches.
+     * @param vocabulary a Set of String objects representing the vocabulary.
+     * @param typo a String representing the typo.
+     * @throws NullPointerException if vocabulary is null or contains null strings, or if typo is a null string.
+     * @throws IllegalArgumentException if vocabulary contains any empty string, or if typo is an empty string.
      */
-    public TypoChecker(Set<String> vocabulary) {
+    public TypoChecker(Set<String> vocabulary, String typo) {
         for (var word : vocabulary) {
             if (word.isEmpty()) throw new IllegalArgumentException("Vocabulary cannot contain any empty string.");
         }
+        if (Objects.requireNonNull(typo, "typo cannot be null.").isEmpty()) throw new IllegalArgumentException("Cannot have an empty string.");
         this.vocabulary = Set.copyOf(vocabulary);
+        this.typo = typo;
+    }
+    
+    /**
+     * Compares the user-given typo with the set of words in a predefined vocabulary to find the best matches.
+     * @throws NullPointerException if typo is a null string.
+     * @throws IllegalArgumentException if typo is an empty string.
+     */
+    public TypoChecker(String typo) {
+        if (Objects.requireNonNull(typo, "typo cannot be null.").isEmpty()) throw new IllegalArgumentException("Cannot have an empty string.");
+        Set<String> mySet = new HashSet<>();
+        mySet.add("animal"); //Adding some words
+        mySet.add("house");
+        mySet.add("mother");
+        mySet.add("door");
+        mySet.add("bread");
+        mySet.add("rice");
+        mySet.add("ball");
+        mySet.add("hamburger");
+        mySet.add("biology");
+        this.vocabulary = mySet;
+        this.typo = typo;
     }
 
     /**

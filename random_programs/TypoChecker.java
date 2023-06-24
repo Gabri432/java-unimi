@@ -146,7 +146,7 @@ public class TypoChecker {
         if (set1.isEmpty() || set2.isEmpty()) throw new IllegalArgumentException("Cannot have empty sets.");
         Set<String> answer = new HashSet<>();
         Set<String> shortestSet = (set1.size() <= set2.size()) ? set1 : set2;
-        Set<String> longestSet = (set2.size() <= set1.size()) ? set1 : set2;
+        Set<String> longestSet = !(set1.size() <= set2.size()) ? set1 : set2;
         for (var word : shortestSet) {
             if (longestSet.contains(word)) answer.add(word);
         }

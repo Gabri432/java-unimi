@@ -129,7 +129,12 @@ public class TypoChecker {
         if (closeBeginnings.isEmpty() && closeEndings.isEmpty()) return closeLength; 
         Set<String> sameLengthAndBegin = findMatches(closeLength, closeBeginnings);
         Set<String> sameLengthAndEnd = findMatches(closeLength, closeEndings);
-        return findMatches(sameLengthAndBegin, sameLengthAndEnd);
+        Set<String> answer = findMatches(sameLengthAndBegin, sameLengthAndEnd);
+        if (answer.isEmpty()) {
+            answer.addAll(sameLengthAndBegin);
+            answer.addAll(sameLengthAndEnd);
+        }
+        return answer;
     }
 
     /**

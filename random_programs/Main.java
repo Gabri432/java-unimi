@@ -5,6 +5,8 @@ public class Main {
         System.out.println(transitiveRel());
         System.out.println(reflexiveRel());
         System.out.println(antisymmetricRel());
+
+        System.out.println(new TypoChecker());
     }
 
     static public RelationSet transitiveRel() {

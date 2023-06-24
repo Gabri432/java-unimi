@@ -64,7 +64,7 @@ public class TypoChecker {
         Set<String> answer = new HashSet<>();
         checkTypoValidity(typo);
         for (var word : vocabulary) {
-            if (word.length() <= typo.length() + 1 || word.length() >= typo.length() - 1 ) answer.add(word);
+            if (word.length() <= typo.length() + 1 && word.length() >= typo.length() - 1 ) answer.add(word);
         }
         return answer;
     }
@@ -166,11 +166,11 @@ public class TypoChecker {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("The typo: "+typo);
-        s.append("Words with the same (or close) length: " + sameLengthWords(typo));
-        s.append("Words with the same beginning: "+ compareBeginnings(typo));
-        s.append("Words with the same ending: "+compareEndings(typo));
-        s.append("Best matches: "+ bestMatches(typo));
+        s.append("The typo: "+typo + "\n");
+        s.append("Words with the same (or close) length: " + sameLengthWords(typo) + "\n");
+        s.append("Words with the same beginning: "+ compareBeginnings(typo) + "\n");
+        s.append("Words with the same ending: "+compareEndings(typo) + "\n");
+        s.append("Best matches: "+ bestMatches(typo) + "\n");
         return s.toString();
     }
     

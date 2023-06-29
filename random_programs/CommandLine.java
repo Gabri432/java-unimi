@@ -64,8 +64,8 @@ public class CommandLine {
         private void checkCommands(String commandName, ArrayList<String> commandArguments) {
             switch (commandName) {
                 case "VAR":
-                if (commandArguments.size() != 1 || commandArguments.contains(null)) {
-                    throw new IllegalArgumentException("Need exactly 1 non-null argument to run the command " + commandName + ".");
+                if (commandArguments.size() != 1 || commandArguments.contains(null) || commandArguments.get(0).isEmpty()) {
+                    throw new IllegalArgumentException("Need exactly 1 non-null and non-empty argument to run the command " + commandName + ".");
                 }
                 break;
                 case "ADD", "SUB", "MUL", "DIV":
@@ -74,8 +74,13 @@ public class CommandLine {
                 }
                 break;
                 case "PRINT":
-                if (commandArguments.size() != 1 || commandArguments.contains(null)) {
-                    throw new IllegalArgumentException("Need exactly 1 non-null argument to run the command " + commandName + ".");
+                if (commandArguments.size() != 1 || commandArguments.contains(null) || commandArguments.get(0).isEmpty()) {
+                    throw new IllegalArgumentException("Need exactly 1 non-null and non-empty argument to run the command " + commandName + ".");
+                }
+                break;
+                case "LOG":
+                if (commandArguments.size() > 1) {
+                    throw new IllegalArgumentException("Expected at most 1 argument.");
                 }
                 break;
             }
@@ -124,6 +129,11 @@ public class CommandLine {
             print(command.commandArguments.get(0));
             break;
             case "LOG":
+            if (command.commandArguments.size() == 1) {
+                log(Integer.parseInt(command.commandArguments.get(0)));
+            } else {
+                log();
+            }
             break;
         }
     }
@@ -133,7 +143,7 @@ public class CommandLine {
      * @param command the command containing the needed arguments.
      * @throws IllegalArgumentException if command argument isn't a string.
      */
-    public void createVariable(Command command) {
+    private void createVariable(Command command) {
         if (command.commandArguments.get(0).isEmpty()) throw new IllegalArgumentException("Variable name cannot be empty");
         ArrayList<String> args = command.commandArguments;
         localVariables.putIfAbsent(args.get(0), 0);
@@ -145,7 +155,7 @@ public class CommandLine {
      * @throws IllegalArgumentException if there aren't integers for performing the operation, or the variable name was not defined.
      * @throws MissingArgumentException if the variable was not specified.
      */
-    public void integersOperations(Command command) {
+    private void integersOperations(Command command) {
         ArrayList<String> args = command.commandArguments;
         try {
             int a = Integer.parseInt(args.get(0));

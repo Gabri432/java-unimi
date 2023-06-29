@@ -46,21 +46,21 @@ public class Main {
         myCommands.add(generateCommand("PRINT (myVar)"));
         myCommands.add(generateCommand("ADD (3,6,myVar)"));
         myCommands.add(generateCommand("PRINT (myVar)"));
-        myCommands.add(generateCommand("SUB (myVar)"));
-        myCommands.add(generateCommand("VAR (myVar)"));
+        myCommands.add(generateCommand("SUB (2,myVar,myVar)"));
+        myCommands.add(generateCommand("LOG (0)"));
         CommandLine myCMD = new CommandLine(myCommands);
-        System.out.println(myCMD);
         myCMD.execute();
+        System.out.println(myCMD.localVariables);
     }
 
     static public Command generateCommand(String command) {
         String[] commandDetails = command.split(" ", 2);
         String commandName = commandDetails[0];
-        String[] commandArgs = commandDetails[1].replace("(", "s").replace(")", "").split(",");
+        String[] commandArgs = commandDetails[1].replace("(", "").replace(")", "").split(",");
         ArrayList<String> myArgs = new ArrayList<>();
         myArgs.add(commandArgs[0]);
-        myArgs.add(commandArgs[1]);
-        myArgs.add(commandArgs[2]);
+        if (commandArgs.length > 1) myArgs.add(commandArgs[1]);
+        if (commandArgs.length > 2) myArgs.add(commandArgs[2]);
         return new Command(commandName, myArgs);
     }
 }

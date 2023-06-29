@@ -49,6 +49,7 @@ A collection of programs written in Java for practicing with the language.
 - random_programs
   - [RelationSet.java](https://github.com/Gabri432/java-unimi/blob/master/random_programs/RelationSet.java)
   - [TypoChecker.java](https://github.com/Gabri432/java-unimi/blob/master/random_programs/TypoChecker.java)
+  - [CommandLine.java](https://github.com/Gabri432/java-unimi/blob/master/random_programs/CommandLine.java)
 
 ## Notes
 - The programs may not be much efficient as the porpuse of this repository was just for making practice with Java features.

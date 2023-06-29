@@ -22,10 +22,14 @@ public class CommandLine {
      * Concrete immutable class representing a command in the commandLine. The possible commands are: <br /><br/>
      * <ul>
      * <li>VAR (string)</li>
-     * <li>ADD (int, string)</li>
-     * <li>SUB (int, string)</li>
-     * <li>MUL (int, string)</li>
-     * <li>DIV (int, string)</li>
+     * <li>ADD (int, int, string)</li>
+     * <li>SUB (int, int, string)</li>
+     * <li>MUL (int, int, string)</li>
+     * <li>DIV (int, int, string)</li>
+     * <li>ADD (int, string, string)</li>
+     * <li>SUB (int, string, string)</li>
+     * <li>MUL (int, string, string)</li>
+     * <li>DIV (int, string, string)</li>
      * <li>PRINT (string)</li>
      * <li>LOG (int)</li>
      * <li>LOG</li>
@@ -69,8 +73,13 @@ public class CommandLine {
                 }
                 break;
                 case "ADD", "SUB", "MUL", "DIV":
-                if (commandArguments.size() != 2 || commandArguments.contains(null)) {
+                if (commandArguments.size() != 3 || commandArguments.contains(null)) {
                     throw new IllegalArgumentException("At least 2 non-null arguments to run the command " + commandName + ".");
+                }
+                try {
+                    Integer.parseInt(commandArguments.get(0));
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("First argument must be integer for command " + commandName + ".");
                 }
                 break;
                 case "PRINT":
@@ -115,15 +124,24 @@ public class CommandLine {
      * @throws IllegalArgumentException if command arguments aren't of the correct type.
      */
     public void execute(Command command) {
+        ArrayList<String> args = command.commandArguments;
         switch (command.commandName) {
             case "VAR":
             createVariable(command);
             break;
             case "ADD", "MUL", "SUB":
-            integersOperations(command);
+            try {
+                integersOperations(Integer.parseInt(args.get(0)), Integer.parseInt(args.get(1)), args.get(2));
+            } catch (NumberFormatException e) {
+                integersOperations(Integer.parseInt(args.get(0)), args.get(1), args.get(2));
+            }
             break;
             case "DIV":
-            division(command);
+            try {
+                division(Integer.parseInt(args.get(0)), Integer.parseInt(args.get(1)), args.get(2));
+            } catch (NumberFormatException e) {
+                division(Integer.parseInt(args.get(0)), args.get(1), args.get(2));
+            }
             break;
             case "PRINT":
             print(command.commandArguments.get(0));
@@ -150,47 +168,72 @@ public class CommandLine {
     }
 
     /**
-     * Performs the sum, substraction, and multiplication and store the result in the command specified variable. 
-     * @param command the command containing the needed arguments.
-     * @throws IllegalArgumentException if there aren't integers for performing the operation, or the variable name was not defined.
-     * @throws MissingArgumentException if the variable was not specified.
+     * Performs the operations of sum, substraction and multiplication and stores the result in a variable.
+     * @param a an Integer.
+     * @param b an Integer.
+     * @param variableForStoring the variable where storing the result of the operation between a and b.
      */
-    private void integersOperations(Command command) {
-        ArrayList<String> args = command.commandArguments;
+    private void integersOperations(Integer a, Integer b, String variableForStoring) {
+        if (!localVariables.containsKey(variableForStoring)) {
+            throw new IllegalArgumentException("Variable "+ variableForStoring + " not defined.");
+        }
+        int result = a*b;
+        localVariables.put(variableForStoring, result);
+    }
+
+    /**
+     * Performs the operations of sum, substraction and multiplication and stores the result in a variable.
+     * @param a an Integer.
+     * @param variableValue a String representing a variable holding an integer.
+     * @param variableForStoring the variable where storing the result of the operation between a and b.
+     */
+    private void integersOperations(Integer a, String variableValue, String variableForStoring) {
+        if (!localVariables.containsKey(variableForStoring)) {
+            throw new IllegalArgumentException("Variable "+ variableForStoring + " not defined.");
+        }
+        if (!localVariables.containsKey(variableValue)) {
+            throw new IllegalArgumentException("Variable "+ variableValue + " not defined.");
+        }
+        int result = a*localVariables.get(variableValue);
+        localVariables.put(variableForStoring, result);
+    }
+
+    /**
+     * Performs the division between a and b, and stores the results in a variable.
+     * @param a an Integer.
+     * @param b an Integer.
+     * @param variableForStoring the variable where storing the result of the division between a and b.
+     */
+    private void division(Integer a, Integer b, String variableForStoring) {
+        if (!localVariables.containsKey(variableForStoring)) {
+            throw new IllegalArgumentException("Variable "+ variableForStoring + " not defined.");
+        }
         try {
-            int a = Integer.parseInt(args.get(0));
-            String variable = command.commandArguments.get(1);
-            if (!localVariables.containsKey(variable)) throw new IllegalArgumentException("Variable "+ variable +" not found.");
-            int b = localVariables.get(variable);
-            localVariables.put(variable, a*b);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Must have one integer to execute "+ command.commandName + ".");
-        } catch (IndexOutOfBoundsException e) {
-            throw new MissingFormatArgumentException("Missing variable name to save the value.");
+            int result = a/b;
+            localVariables.put(variableForStoring, result);
+        } catch (ArithmeticException e) {
+            throw new IllegalArgumentException("Cannot divide by zero.");
         }
     }
 
     /**
-     * Performs the division and stores the result in the command specified variable.
-     * @param command the command containing the needed arguments.
-     * @throws IllegalArgumentException if there aren't integers for performing the operation, or the variable name was not defined.
-     * @throws MissingArgumentException if the variable was not specified.
+     * Performs the division between a and a variable containing an integer, and stores the results in a variable.
+     * @param a an Integer.
+     * @param variableValue a String representing a variable holding an integer. 
+     * @param variableForStoring the variable where storing the result of the division between a and the variable value.
      */
-    public void division(Command command) {
-        ArrayList<String> args = command.commandArguments;
+    private void division(Integer a, String variableValue, String variableForStoring) {
+        if (!localVariables.containsKey(variableForStoring)) {
+            throw new IllegalArgumentException("Variable "+ variableForStoring + " not defined.");
+        }
+        if (!localVariables.containsKey(variableValue)) {
+            throw new IllegalArgumentException("Variable "+ variableValue + " not defined.");
+        }
         try {
-            int a = Integer.parseInt(args.get(0));
-            String variable = command.commandArguments.get(1);
-            if (!localVariables.containsKey(variable)) throw new IllegalArgumentException("Variable "+ variable +" not found.");
-            int b = localVariables.get(variable);
-            if (b == 0) {
-            throw new ArithmeticException("Cannot divide per zero.");
-            }
-            localVariables.put(variable, a*b);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Arguments must be integers to execute "+ command.commandName + ".");
-        } catch (IndexOutOfBoundsException e) {
-            throw new MissingFormatArgumentException("Missing variable name to save the value.");
+            int result = a/localVariables.get(variableValue);
+            localVariables.put(variableForStoring, result);
+        } catch (ArithmeticException e) {
+            throw new IllegalArgumentException("Variable "+ variableValue + " is zero valued!");
         }
     }
 

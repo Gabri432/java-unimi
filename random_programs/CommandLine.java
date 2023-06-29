@@ -287,5 +287,15 @@ public class CommandLine {
             System.out.println(command);
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("Commands: ");
+        for (Command command : commands) {
+            s.append(command);
+        }
+        return s.toString();
+    }
     
 }

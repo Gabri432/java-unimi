@@ -44,8 +44,8 @@ public class Main {
         ArrayList<String> myArgs = new ArrayList<>();
         myArgs.add("Hello");
         myCommands.add(new Command("VAR", myArgs));
-        myCommands.add(new Command("PRINT", myArgs));
+        myCommands.add(new Command("LOG", myArgs));
         CommandLine myCMD = new CommandLine(myCommands);
-        myCMD.execute(null);
+        myCMD.execute();
     }
 }

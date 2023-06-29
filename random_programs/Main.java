@@ -6,11 +6,12 @@ import random_programs.CommandLine.Command;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(transitiveRel());
-        System.out.println(reflexiveRel());
-        System.out.println(antisymmetricRel());
+        //System.out.println(transitiveRel());
+        //System.out.println(reflexiveRel());
+        //System.out.println(antisymmetricRel());
 
-        System.out.println(new TypoChecker());
+        //System.out.println(new TypoChecker());
+        cmd();
     }
 
     static public RelationSet transitiveRel() {
@@ -46,6 +47,7 @@ public class Main {
         myCommands.add(new Command("VAR", myArgs));
         myCommands.add(new Command("LOG", myArgs));
         CommandLine myCMD = new CommandLine(myCommands);
+        System.out.println(myCMD);
         myCMD.execute();
     }
 }

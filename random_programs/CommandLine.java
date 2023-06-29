@@ -2,6 +2,7 @@ package random_programs;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -37,7 +38,6 @@ public class CommandLine {
     public static class Command {
         public final String commandName;
         public final ArrayList<String> commandArguments;
-        public ArrayList<Command> pastCommands;
         
         /**
          * Constructs a command based on the name and the needed arguments.
@@ -115,6 +115,7 @@ public class CommandLine {
             myCommands.add(new Command(command.commandName, command.commandArguments));   
         }
         this.commands = commands;
+        this.localVariables = new HashMap<String, Integer>();
     }
 
     /**

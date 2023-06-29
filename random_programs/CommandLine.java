@@ -131,9 +131,9 @@ public class CommandLine {
             break;
             case "ADD", "MUL", "SUB":
             try {
-                integersOperations(Integer.parseInt(args.get(0)), Integer.parseInt(args.get(1)), args.get(2));
+                integersOperations(Integer.parseInt(args.get(0)), Integer.parseInt(args.get(1)), args.get(2), command.commandName);
             } catch (NumberFormatException e) {
-                integersOperations(Integer.parseInt(args.get(0)), args.get(1), args.get(2));
+                integersOperations(Integer.parseInt(args.get(0)), args.get(1), args.get(2), command.commandName);
             }
             break;
             case "DIV":
@@ -182,33 +182,56 @@ public class CommandLine {
     }
 
     /**
-     * Performs the operations of sum, substraction and multiplication and stores the result in a variable.
+     * Performs the operations of sum or substraction or multiplication and stores the result in a variable.
      * @param a an Integer.
      * @param b an Integer.
      * @param variableForStoring the variable where storing the result of the operation between a and b.
      */
-    private void integersOperations(Integer a, Integer b, String variableForStoring) {
+    private void integersOperations(Integer a, Integer b, String variableForStoring, String op) {
         if (!localVariables.containsKey(variableForStoring)) {
             throw new IllegalArgumentException("Variable "+ variableForStoring + " not defined.");
         }
-        int result = a*b;
+        int result = 0;
+        switch (op) {
+            case "ADD":
+            result = a+b;
+            break;
+            case "SUB":
+            result = a-b;
+            break;
+            case "MUL":
+            result = a*b;
+            break;
+        }
         localVariables.put(variableForStoring, result);
     }
 
     /**
-     * Performs the operations of sum, substraction and multiplication and stores the result in a variable.
+     * Performs the operations of sum or substraction or multiplication and stores the result in a variable.
      * @param a an Integer.
      * @param variableValue a String representing a variable holding an integer.
      * @param variableForStoring the variable where storing the result of the operation between a and b.
      */
-    private void integersOperations(Integer a, String variableValue, String variableForStoring) {
+    private void integersOperations(Integer a, String variableValue, String variableForStoring, String op) {
         if (!localVariables.containsKey(variableForStoring)) {
             throw new IllegalArgumentException("Variable "+ variableForStoring + " not defined.");
         }
         if (!localVariables.containsKey(variableValue)) {
             throw new IllegalArgumentException("Variable "+ variableValue + " not defined.");
         }
-        int result = a*localVariables.get(variableValue);
+        int result = 0;
+        int b = localVariables.get(variableValue);
+        switch (op) {
+            case "ADD":
+            result = a+b;
+            break;
+            case "SUB":
+            result = a-b;
+            break;
+            case "MUL":
+            result = a*b;
+            break;
+        }
         localVariables.put(variableForStoring, result);
     }
 

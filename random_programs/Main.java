@@ -42,10 +42,13 @@ public class Main {
 
     static public void cmd() {
         ArrayList<Command> myCommands = new ArrayList<>();
-        ArrayList<String> myArgs = new ArrayList<>();
-        myArgs.add("Hello");
-        myCommands.add(new Command("VAR", myArgs));
-        myCommands.add(new Command("LOG", myArgs));
+        ArrayList<String> myVarArgs = new ArrayList<>();
+        myVarArgs.add("Hello");
+        ArrayList<String> myAddArgs = new ArrayList<>();
+        myAddArgs.add("Hello");
+        myAddArgs.add("");
+        myCommands.add(new Command("VAR", myVarArgs));
+        myCommands.add(new Command("ADD", myAddArgs));
         CommandLine myCMD = new CommandLine(myCommands);
         System.out.println(myCMD);
         myCMD.execute();

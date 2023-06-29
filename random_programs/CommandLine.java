@@ -22,13 +22,9 @@ public class CommandLine {
      * Concrete immutable class representing a command in the commandLine. The possible commands are: <br /><br/>
      * <ul>
      * <li>VAR (string)</li>
-     * <li>ADD (int,int, string)</li>
      * <li>ADD (int, string)</li>
-     * <li>SUB (int,int, string)</li>
      * <li>SUB (int, string)</li>
-     * <li>MUL (int,int, string)</li>
      * <li>MUL (int, string)</li>
-     * <li>DIV (int,int, string)</li>
      * <li>DIV (int, string)</li>
      * <li>PRINT (string)</li>
      * <li>LOG (int)</li>
@@ -125,7 +121,7 @@ public class CommandLine {
             division(command);
             break;
             case "PRINT":
-            print(command);
+            print(command.commandArguments.get(0));
             break;
             case "LOG":
             break;
@@ -153,12 +149,12 @@ public class CommandLine {
         ArrayList<String> args = command.commandArguments;
         try {
             int a = Integer.parseInt(args.get(0));
-            int b = Integer.parseInt(args.get(1));
-            String variable = command.commandArguments.get(2);
+            String variable = command.commandArguments.get(1);
             if (!localVariables.containsKey(variable)) throw new IllegalArgumentException("Variable "+ variable +" not found.");
+            int b = localVariables.get(variable);
             localVariables.put(variable, a*b);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Arguments must be integers to execute "+ command.commandName + ".");
+            throw new IllegalArgumentException("Must have one integer to execute "+ command.commandName + ".");
         } catch (IndexOutOfBoundsException e) {
             throw new MissingFormatArgumentException("Missing variable name to save the value.");
         }
@@ -174,12 +170,12 @@ public class CommandLine {
         ArrayList<String> args = command.commandArguments;
         try {
             int a = Integer.parseInt(args.get(0));
-            int b = Integer.parseInt(args.get(1));
+            String variable = command.commandArguments.get(1);
+            if (!localVariables.containsKey(variable)) throw new IllegalArgumentException("Variable "+ variable +" not found.");
+            int b = localVariables.get(variable);
             if (b == 0) {
             throw new ArithmeticException("Cannot divide per zero.");
             }
-            String variable = command.commandArguments.get(2);
-            if (!localVariables.containsKey(variable)) throw new IllegalArgumentException("Variable "+ variable +" not found.");
             localVariables.put(variable, a*b);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Arguments must be integers to execute "+ command.commandName + ".");
@@ -189,13 +185,14 @@ public class CommandLine {
     }
 
     /**
-     * Prints the value of the variable specified by the command.
-     * @param command the command that contains the variable to print.
+     * Prints the value of the specified variable name.
+     * @param variableName a String representing the variable to print.
      * @throws NullPointerException if the variable is null.
      */
-    public void print(Command command) {
-        Objects.requireNonNull(command.commandArguments.get(0), "Cannot print null strings.");
-        System.out.println(command.commandArguments.get(0));
+    public void print(String variableName) {
+        Objects.requireNonNull(variableName, "Cannot have a null variable.");
+        if (!localVariables.containsKey(variableName)) throw new IllegalArgumentException("Variable "+ variableName +" not found.");
+        System.out.println(localVariables.get(variableName));
     }
 
     /**

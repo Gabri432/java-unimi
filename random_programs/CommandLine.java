@@ -69,7 +69,7 @@ public class CommandLine {
                 }
                 break;
                 case "ADD", "SUB", "MUL", "DIV":
-                if (commandArguments.size() < 2 || commandArguments.contains(null)) {
+                if (commandArguments.size() != 2 || commandArguments.contains(null)) {
                     throw new IllegalArgumentException("At least 2 non-null arguments to run the command " + commandName + ".");
                 }
                 break;

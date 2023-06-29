@@ -34,7 +34,7 @@ public class CommandLine {
      * <li>LOG</li>
      * </ul>
      */
-    public class Command {
+    public static class Command {
         public final String commandName;
         public final ArrayList<String> commandArguments;
         public ArrayList<Command> pastCommands;
@@ -147,11 +147,25 @@ public class CommandLine {
             break;
             case "LOG":
             if (command.commandArguments.size() == 1) {
-                log(Integer.parseInt(command.commandArguments.get(0)));
+                try {
+                    log(Integer.parseInt(command.commandArguments.get(0)));
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Argument must be of type integer to execute LOG.");
+                }
             } else {
                 log();
             }
             break;
+        }
+    }
+
+    /**
+     * Executes all the commands.
+     * @throws IllegalArgumentException if a command has arguments that aren't of the correct type.
+     */
+    public void execute() {
+        for (Command command : commands) {
+            execute(command);
         }
     }
 

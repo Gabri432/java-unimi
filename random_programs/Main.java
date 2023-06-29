@@ -1,5 +1,9 @@
 package random_programs;
 
+import java.util.ArrayList;
+
+import random_programs.CommandLine.Command;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println(transitiveRel());
@@ -33,5 +37,15 @@ public class Main {
         myRelationSet.addRelation(3, 1);
         myRelationSet.addRelation(4, 4);
         return myRelationSet;
+    }
+
+    static public void cmd() {
+        ArrayList<Command> myCommands = new ArrayList<>();
+        ArrayList<String> myArgs = new ArrayList<>();
+        myArgs.add("Hello");
+        myCommands.add(new Command("VAR", myArgs));
+        myCommands.add(new Command("PRINT", myArgs));
+        CommandLine myCMD = new CommandLine(myCommands);
+        myCMD.execute(null);
     }
 }

@@ -32,7 +32,6 @@ public class CommandLine {
      * <li>DIV (int, string, string)</li>
      * <li>PRINT (string)</li>
      * <li>LOG (int)</li>
-     * <li>LOG</li>
      * </ul>
      */
     public static class Command {
@@ -87,8 +86,8 @@ public class CommandLine {
                 }
                 break;
                 case "LOG":
-                if (commandArguments.size() > 1) {
-                    throw new IllegalArgumentException("Expected at most 1 argument.");
+                if (commandArguments.size() != 1) {
+                    throw new IllegalArgumentException("Expected exactly 1 argument.");
                 }
                 break;
             }
@@ -147,15 +146,11 @@ public class CommandLine {
             print(command.commandArguments.get(0));
             break;
             case "LOG":
-            if (command.commandArguments.size() == 1) {
-                try {
+            try {
                     log(Integer.parseInt(command.commandArguments.get(0)));
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Argument must be of type integer to execute LOG.");
                 }
-            } else {
-                log();
-            }
             break;
         }
     }
@@ -286,12 +281,16 @@ public class CommandLine {
     }
 
     /**
-     * Prints the previous n commands starting from the most recent. 
+     * Prints the previous n commands starting from the most recent. If n == 0 then all commands will be printed. 
      * @param n an Integer representing how many commands need to be printed.
-     * @throws IllegalArgumentException if n is non-positive.
+     * @throws IllegalArgumentException if n is negative.
      */
-    public void log(Integer n) {
-        if (n < 1) throw new IllegalArgumentException("Must have positive integer to log commands.");
+    private void log(Integer n) {
+        if (n < 0) throw new IllegalArgumentException("Must have positive integer to log commands.");
+        if (n == 0) {
+            log();
+            return;
+        }
         int counter = 0;
         ArrayList<Command> copyCommands = this.commands;
         Collections.reverse(copyCommands);
@@ -304,7 +303,7 @@ public class CommandLine {
     /**
      * Prints all the previous commands starting from the most recent. 
      */
-    public void log() {
+    private void log() {
         ArrayList<Command> copyCommands = this.commands;
         Collections.reverse(copyCommands);
         for (Command command : copyCommands) {

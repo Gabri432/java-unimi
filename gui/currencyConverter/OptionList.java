@@ -7,6 +7,8 @@ import java.util.HashMap;
 import javax.swing.JComboBox;
 
 public class OptionList implements ActionListener {
+    private int selectedValue = 100;
+
     public JComboBox<String> createOptionList(String[] currencyStrings) {
         return new JComboBox<String>(currencyStrings);
     }
@@ -27,7 +29,7 @@ public class OptionList implements ActionListener {
         @SuppressWarnings("unchecked")
         JComboBox<String> cb = (JComboBox<String>)e.getSource();
         String currencyName = (String)cb.getSelectedItem();
-        getCurrency(currencyName.split(" ")[0]);
+        this.selectedValue = getCurrency(currencyName.split(" ")[0]);
     }
 
     /**
@@ -45,6 +47,10 @@ public class OptionList implements ActionListener {
         currencyMap.putIfAbsent("RUB",9);
         currencyMap.putIfAbsent("CNY",13);
         return currencyMap.get(currencyName);
+    }
+
+    public int getSelectedValue() {
+        return selectedValue;
     }
     
 }

@@ -1,8 +1,13 @@
 package random_programs;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
-import random_programs.CommandLine.Command;
+//import random_programs.CommandLine.Command;
+//import random_programs.Fridge;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,10 +16,11 @@ public class Main {
         //System.out.println(antisymmetricRel());
 
         //System.out.println(new TypoChecker());
-        cmd();
+        //cmd();
+        tryFridgeProgram();
     }
 
-    static public RelationSet transitiveRel() {
+    /**static public RelationSet transitiveRel() {
         RelationSet myRelationSet = new RelationSet();
         myRelationSet.addRelation(1, 2);
         myRelationSet.addRelation(2, 3);
@@ -62,5 +68,24 @@ public class Main {
         if (commandArgs.length > 1) myArgs.add(commandArgs[1]);
         if (commandArgs.length > 2) myArgs.add(commandArgs[2]);
         return new Command(commandName, myArgs);
+    }**/
+
+    static public void tryFridgeProgram() {
+        try {
+            File file = new File("random_programs\\text_files\\Fridge.text");
+            Scanner sc = new Scanner(file);
+            Fridge myFridge = new Fridge();
+            while (sc.hasNextLine()) {
+                //String s = Arrays.toString(sc.nextLine().split(","));
+                String[] line = sc.nextLine().split(",");
+                myFridge.addItem(line[0], line[1], Integer.parseInt(line[2]));
+                //System.out.println(s.length());
+            }
+            System.out.println(myFridge);
+            myFridge.listExpiredItems();
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not find your file");
+        }
     }
 }

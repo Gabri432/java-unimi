@@ -1,12 +1,16 @@
 package random_programs;
 
 import java.util.Objects;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * A class offering a series of methods to keep track of the items in the fridge.
+ * A class offering a series of methods to keep track of the items in the fridge. <br /><br />
+ * A fridge contains a set of items.
  */
 public class Fridge {
-
+    private Set<FridgeItem> fridge = new HashSet<>();
     /**
      * A class representing any item that could be stored in a fridge.
      */
@@ -55,6 +59,40 @@ public class Fridge {
 
         public int getQuantity() {
             return this.quantity;
+        }
+
+        /**
+         * Verifies if the item has expired, that is, if the expiration date has already passed. 
+         * @return true if the expiration date has passed, false otherwise.
+         */
+        public boolean isExpired() {
+            LocalDate today = LocalDate.now();
+            String[] DMY = this.expireDate.split("-"); 
+            int year = Integer.parseInt(DMY[2]);
+            int month = Integer.parseInt(DMY[1]);
+            int day = Integer.parseInt(DMY[0]);
+            return LocalDate.of(year, month, day).isAfter(today);
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) {
+                return true;
+            }
+
+            if (!(obj instanceof FridgeItem)) {
+                return false;
+            }
+
+            FridgeItem item = (FridgeItem) obj;
+            if (!(item.name.equals(getName()))) return false; //Comparing names.
+            if (!(item.expireDate.equals(getExpireDate()))) return false; //Comparing expiration dates.
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getName(), getExpireDate());
         }
     }
     

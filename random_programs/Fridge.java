@@ -63,7 +63,7 @@ public class Fridge {
             int year = Integer.parseInt(DMY[2]);
             int month = Integer.parseInt(DMY[1]);
             int day = Integer.parseInt(DMY[0]);
-            return LocalDate.of(year, month, day).isAfter(today);
+            return LocalDate.of(year, month, day).isBefore(today);
         }
 
         @Override

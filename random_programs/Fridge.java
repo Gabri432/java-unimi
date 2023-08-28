@@ -11,7 +11,7 @@ import java.util.Map;
  * A fridge contains a map item:quantity.
  */
 public class Fridge {
-    private Map<FridgeItem, Integer> fridge = new HashMap<>();
+    private Map<FridgeItem, Integer> fridge;
     /**
      * A class representing any item that could be stored in a fridge.
      */
@@ -95,6 +95,10 @@ public class Fridge {
             s.append(expireDate);
             return s.toString();
         }
+    }
+
+    public Fridge() {
+        this.fridge = new HashMap<FridgeItem, Integer>();
     }
 
     /**

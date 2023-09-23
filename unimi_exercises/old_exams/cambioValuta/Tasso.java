@@ -24,3 +24,5 @@ public class Tasso {
         return this.impA + " = " + this.impB;
     }
 }
+
+// 1:34:08 rimasti

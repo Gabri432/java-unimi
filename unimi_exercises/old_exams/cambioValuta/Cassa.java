@@ -19,9 +19,10 @@ public class Cassa {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
+        s.append("Cassa:\n");
         for (var importo: importi) {
             if (importo.valore() > 0) {
-                s.append(importo);
+                s.append(importo + "\n");
             }
         }
         return super.toString();

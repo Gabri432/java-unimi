@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Importo {
     private float valore;
-    private final Valuta valuta;
+    public final Valuta valuta;
     
     public Importo(float valore, Valuta valuta) {
         this.valore = valore;

@@ -23,6 +23,10 @@ public class Importo {
         return 0;
     }
 
+    public float valore() {
+        return 0;
+    }
+
     @Override
     public String toString() {
         return this.valuta.simbolo + " " + this.valore;

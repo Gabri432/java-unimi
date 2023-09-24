@@ -1,5 +1,7 @@
 package unimi_exercises.old_exams.cambioValuta;
 
+import java.util.Objects;
+
 public class Tasso {
     public final Importo impA;
     public final Importo impB;
@@ -17,6 +19,26 @@ public class Tasso {
     public Tasso(Importo importoA, Importo importoB) {
         this.impA = new Importo(importoA.valore(), importoA.valuta);
         this.impB = new Importo(importoB.valore(), importoB.valuta);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Tasso)) {
+            return false;
+        }
+        Tasso tasso = (Tasso) obj;
+        if (tasso.impA.valuta != impA.valuta) return false;
+        if (tasso.impB.valuta != impA.valuta) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(impA.valuta, impB.valuta);
     }
 
     @Override

@@ -9,12 +9,21 @@ public class CambiaValute {
     //RI:
     //AF: CambiaValute è una classe concreta rappresentata da due proprietà, "tassi", ArrayList di oggetti Tasso, e "cassa", di tipo Cassa. 
 
+    public CambiaValute() {
+        this.cassa = new Cassa();
+        ArrayList<Tasso> tassiIniziali = new ArrayList<Tasso>();
+        this.tassi = tassiIniziali;
+    }
     /**
      * Aggiorna un tasso di cambio.
      * @param tasso il nuovo tasso di cambio.
      * @throws NullPointerException se il tasso è nullo.
      */
-    public void aggiornaTasso(Tasso tasso) {}
+    public void aggiornaTasso(Tasso tasso) {
+        for (Tasso tassoDiCambio : tassi) {
+            if (tassoDiCambio.equals(tasso)) {}
+        }
+    }
 
 
     /**

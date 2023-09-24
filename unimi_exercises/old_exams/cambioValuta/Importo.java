@@ -8,7 +8,7 @@ public class Importo {
     public final Valuta valuta;
 
     //RI: L'importo non può avere una valuta di nome o simbolo vuoti o nulli.
-    //AF: Importo è una classe concreta rappresentata da due proprietà, la stringa "valore", e l'oggetto "valuta" di tipo Valuta.
+    //AF: Importo è una classe concreta rappresentata da due proprietà, "valore" di tipo BigDecimal, e l'oggetto "valuta" di tipo Valuta.
     
     /**
      * Costruisce un oggetto di tipo importo a partire da un valore di partenza e dalla sua valuta.

@@ -63,5 +63,3 @@ public class Cassa {
         return super.toString();
     }
 }
-
-// 1:34:08 rimasti

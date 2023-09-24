@@ -52,5 +52,3 @@ public class Valuta {
         return this.nome + " (" + this.simbolo + ")";
     }
 }
-
-// 1:34:08 rimasti

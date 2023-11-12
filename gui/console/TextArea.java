@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,17 +22,21 @@ public class TextArea extends JPanel implements ActionListener {
     public TextArea() {
         super(new GridBagLayout());
 
+        //Customizing textField
         textField = new JTextField(20);
         textField.addActionListener(this);
         textField.setBackground(Color.BLACK);
         textField.setForeground(Color.LIGHT_GRAY);
         textField.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 20));
+        textField.setMargin(new Insets(5, 25, 5, 25));
 
+        //Customizing textArea
         textArea = new JTextArea(10, 20);
         textArea.setEditable(false);
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(Color.LIGHT_GRAY);
         textArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 20));
+        textArea.setMargin(new Insets(10, 15, 10, 15));
         JScrollPane scrollPane = new JScrollPane(textArea);
 
         //Add Components to this panel.
